@@ -5,11 +5,3 @@
  * Date: 2018/6/18
  * Time: 下午3:50
  */
-
-if (! function_exists('test_helper')) {
-
-    function test_helper()
-    {
-        return 'Ok';
-    }
-}
