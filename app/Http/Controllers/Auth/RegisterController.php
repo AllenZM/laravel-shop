@@ -1,4 +1,10 @@
 <?php
+/**
+ * Name: 注册控制器.
+ * User: 董坤鸿
+ * Date: 2018/6/18
+ * Time: 下午5:34
+ */
 
 namespace App\Http\Controllers\Auth;
 

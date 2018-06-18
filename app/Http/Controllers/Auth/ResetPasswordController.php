@@ -1,4 +1,10 @@
 <?php
+/**
+ * Name: 重置密码控制器.
+ * User: 董坤鸿
+ * Date: 2018/6/18
+ * Time: 下午5:32
+ */
 
 namespace App\Http\Controllers\Auth;
 
@@ -25,7 +31,7 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
