@@ -22,6 +22,11 @@ class PagesController extends Controller
         return view('pages.root');
     }
 
+    /**
+     * 邮箱校验通知页面
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function emailVerifyNotice()
     {
         return view('pages.email_verify_notice');
