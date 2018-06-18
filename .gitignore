@@ -2,8 +2,10 @@
 /public/css
 /public/images
 /public/js
+/public/fonts
 /public/hot
 /public/storage
+/public/mix-manifest.json
 /storage/*.key
 /vendor
 /.idea
