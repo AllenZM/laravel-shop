@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'zh-CN',
+    'locale' => 'zh_CN',
 
     /*
     |--------------------------------------------------------------------------
@@ -92,6 +92,19 @@ return [
     */
 
     'fallback_locale' => 'en',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application faker Locale
+    |--------------------------------------------------------------------------
+    |
+    | The faker locale determines the locale to use when the current one
+    | is not available. You may change the value to correspond to any of
+    | the language folders that are provided through your application.
+    |
+    */
+
+    'faker_locale' => 'zh_CN',
 
     /*
     |--------------------------------------------------------------------------

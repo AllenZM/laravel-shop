@@ -1,4 +1,10 @@
 <?php
+/**
+ * Name: 用户模型.
+ * User: 董坤鸿
+ * Date: 2018/6/18
+ * Time: 下午4:7
+ */
 
 namespace App\Models;
 
@@ -35,4 +41,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified' => 'boolean',
     ];
+
+    /**
+     * 获取用户地址
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function addresses()
+    {
+        return $this->hasMany(UserAddress::class);
+    }
 }
