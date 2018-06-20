@@ -26,7 +26,11 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/email_verification/send', 'EmailVerificationController@send')->name('email_verification.send');
     // 中间件验证身份邮箱验证
     Route::group(['middleware' => 'email_verified'], function() {
-        //用户地址-列表
+        // 用户地址-列表
         Route::get('user_addresses', 'UserAddressesController@index')->name('user_addresses.index');
+        // 用户地址-新增
+        Route::get('user_addresses/create', 'UserAddressesController@create')->name('user_addresses.create');
+        // 用户地址-插入
+        Route::post('user_addresses', 'UserAddressesController@store')->name('user_addresses.store');
     });
 });
