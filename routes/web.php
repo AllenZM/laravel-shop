@@ -32,5 +32,11 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('user_addresses/create', 'UserAddressesController@create')->name('user_addresses.create');
         // 用户地址-插入
         Route::post('user_addresses', 'UserAddressesController@store')->name('user_addresses.store');
+        // 用户地址-编辑
+        Route::get('user_addresses/{user_address}', 'UserAddressesController@edit')->name('user_addresses.edit');
+        // 用户地址-修改
+        Route::put('user_addresses/{user_address}', 'UserAddressesController@update')->name('user_addresses.update');
+        // 用户地址-删除
+        Route::delete('user_addresses/{user_address}', 'UserAddressesController@destroy')->name('user_addresses.destroy');
     });
 });

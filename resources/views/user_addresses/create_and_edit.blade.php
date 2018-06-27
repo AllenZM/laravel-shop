@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('title', '新增收货地址')
+@section('title', ($address->id ? '修改' : '新增') . '新增收货地址')
 
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10   ">
                 <div class="card">
-                    <div class="card-header">收货地址列表</div>
+                    <div class="card-header">{{ $address->id ? '修改' : '新增' }}收货地址列表</div>
 
                     <div class="card-body">
                         <!-- 输出后端报错开始 -->
@@ -23,11 +23,16 @@
                         <!-- 输出后端报错结束 -->
                         <!-- inline-template 代表通过内联方式引入组件 -->
                         <user-addresses-create-and-edit inline-template>
+                            @if($address->id)
+                            <form class="form-horizontal" role="form" action="{{ route('user_addresses.update', ['user_address' => $address->id]) }}" method="post">
+                                {{ method_field('PUT') }}
+                            @else
                             <form class="form-horizontal" role="form" action="{{ route('user_addresses.store') }}" method="post">
+                            @endif
                                 <!-- 引入 csrf token 字段 -->
                                 {{ csrf_field() }}
                                 <!-- 注意这里多了 @change -->
-                                <select-district @change="onDistrictChanged" inline-template>
+                                <select-district :init-value="{{ json_encode([$address->province, $address->city, $address->district]) }}" @change="onDistrictChanged" inline-template>
                                     <div class="form-group" style="display: flex">
                                         <label class="control-label col-sm-2">省市区</label>
                                         <div class="col-sm-3">
