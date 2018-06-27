@@ -1,4 +1,10 @@
 <?php
+/**
+ * Name: 产品信息模型.
+ * User: 董坤鸿
+ * Date: 2018/6/26
+ * Time: 下午3:2
+ */
 
 namespace App\Admin\Controllers;
 
@@ -15,8 +21,8 @@ class HomeController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('Dashboard');
-            $content->description('Description...');
+            $content->header('首页');
+            $content->description('描述');
 
             $content->row(Dashboard::title());
 
