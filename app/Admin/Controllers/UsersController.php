@@ -31,13 +31,14 @@ class UsersController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('用户列表');
+            $content->header('用户');
             $content->description('列表');
             $content->body($this->grid());
         });
     }
 
     /**
+     * 编辑用户
      * Edit interface.
      *
      * @param $id
@@ -47,14 +48,15 @@ class UsersController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('用户');
+            $content->description('编辑');
 
             $content->body($this->form()->edit($id));
         });
     }
 
     /**
+     * 创建用户
      * Create interface.
      *
      * @return Content
@@ -63,14 +65,15 @@ class UsersController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('用户');
+            $content->description('创建');
 
             $content->body($this->form());
         });
     }
 
     /**
+     * 生成器
      * Make a grid builder.
      *
      * @return Grid
@@ -106,6 +109,7 @@ class UsersController extends Controller
     }
 
     /**
+     * 表单生成器
      * Make a form builder.
      *
      * @return Form
