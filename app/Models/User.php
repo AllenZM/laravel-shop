@@ -64,4 +64,14 @@ class User extends Authenticatable
             ->orderBy('user_favorite_products.created_at', 'DESC');
     }
 
+    /**
+     * 获取购物车数据
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function cartItems()
+    {
+        return $this->hasMany(CartItem::class);
+    }
+
 }

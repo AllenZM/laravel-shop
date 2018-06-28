@@ -1,4 +1,10 @@
 <?php
+/**
+ * Name: 用户地址验证.
+ * User: 董坤鸿
+ * Date: 2018/6/28
+ * Time: 下午3:7
+ */
 
 namespace App\Http\Requests;
 
@@ -40,6 +46,19 @@ class UserAddressRequest extends Request
             'zip'           => '邮编',
             'contact_name'  => '姓名',
             'contact_phone' => '电话',
+        ];
+    }
+
+    /**
+     * 获取定义的验证规则的错误消息。
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            //
         ];
     }
 }
