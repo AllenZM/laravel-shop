@@ -16,11 +16,12 @@ Route::group([
     // 用户管理
     $router->get('users', 'UsersController@index');
 
-    // 产品管理
+    // 产品管理/商品管理
     $router->get('products', 'ProductsController@index');
     $router->get('products/create', 'ProductsController@create');
     $router->post('products', 'ProductsController@store');
     $router->get('products/{id}/edit', 'ProductsController@edit');
     $router->put('products/{id}', 'ProductsController@update');
+    $router->delete('products/{id}', 'ProductsController@destroy');
 
 });
