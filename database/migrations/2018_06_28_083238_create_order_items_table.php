@@ -23,8 +23,8 @@ class CreateOrderItemsTable extends Migration
             $table->foreign('product_sku_id')->references('id')->on('product_skus')->onDelete('cascade');
             $table->unsignedInteger('amount')->comment('数量');
             $table->decimal('price', 10, 2)->comment('单价');
-            $table->unsignedInteger('rating')->unllable()->comment('用户打分');
-            $table->text('review')->unllable()->comment('用户评价');
+            $table->unsignedInteger('rating')->nullable()->comment('用户打分');
+            $table->text('review')->nullable()->comment('用户评价');
             $table->timestamp('reviewed_at')->nullable()->comment('评价时间');
         });
     }

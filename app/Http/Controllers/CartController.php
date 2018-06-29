@@ -1,4 +1,10 @@
 <?php
+/**
+ * Name: 购物车控制器.
+ * User: 董坤鸿
+ * Date: 2018/6/28
+ * Time: 下午4:7
+ */
 
 namespace App\Http\Controllers;
 
@@ -18,7 +24,11 @@ class CartController extends Controller
     public function index(Request $request)
     {
         $cartItems = $request->user()->cartItems()->with(['productSku.product'])->get();
-        return view('cart.index', ['cartItems' => $cartItems]);
+        $addresses = $request->user()->addresses()->orderBy('last_used_at', 'DESC')->get();
+        return view('cart.index', [
+            'cartItems' => $cartItems,
+            'addresses' => $addresses
+        ]);
     }
 
     /**
@@ -30,11 +40,11 @@ class CartController extends Controller
     public function add(CartRequest $request)
     {
         $user = $request->user();
-        $sku_id = $request->input('sku_id');
+        $skuId = $request->input('sku_id');
         $amount = $request->input('amount');
 
         // 从数据库中查询该商品是否已经存在购物车中
-        if ($cart = $user->cartItems()->where('product_sku_id', $sku_id)->first()) {
+        if ($cart = $user->cartItems()->where('product_sku_id', $skuId)->first()) {
 
             // 如果存在直接叠加商品数量
             $cart->update([
@@ -45,7 +55,7 @@ class CartController extends Controller
             // 否则创建一个新的购物车记录
             $cart = new CartItem(['amount' => $amount]);
             $cart->user()->associate($user);
-            $cart->productSku()->associate($sku_id);
+            $cart->productSku()->associate($skuId);
             $cart->save();
         }
 

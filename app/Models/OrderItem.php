@@ -21,7 +21,7 @@ class OrderItem extends Model
      * @var array
      */
     protected $fillable = [
-        'amount', 'price', 'rating', 'review', 'reviewed_at',
+        'amount', 'price', 'rating', 'review', 'reviewed_at'
     ];
 
     /**

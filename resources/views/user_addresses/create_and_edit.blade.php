@@ -33,7 +33,7 @@
                             <!-- 注意这里多了 @change -->
                             <select-district :init-value="{{ json_encode([$address->province, $address->city, $address->district]) }}" @change="onDistrictChanged" inline-template>
                                 <div class="form-group" style="display: flex">
-                                    <label class="control-label col-sm-2">省市区</label>
+                                    <label class="control-label col-sm-2 text-right">省市区</label>
                                     <div class="col-sm-3">
                                         <select class="form-control" v-model="provinceId">
                                             <option value="">选择省</option>
@@ -61,25 +61,25 @@
                             <input type="hidden" name="city" v-model="city">
                             <input type="hidden" name="district" v-model="district">
                             <div class="form-group" style="display: flex">
-                                <label class="control-label col-sm-2">详细地址</label>
+                                <label class="control-label col-sm-2 text-right">详细地址</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="address" value="{{ old('address', $address->address) }}">
                                 </div>
                             </div>
                             <div class="form-group" style="display: flex">
-                                <label class="control-label col-sm-2">邮编</label>
+                                <label class="control-label col-sm-2 text-right">邮编</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="zip" value="{{ old('zip', $address->zip) }}">
                                 </div>
                             </div>
                             <div class="form-group" style="display: flex">
-                                <label class="control-label col-sm-2">姓名</label>
+                                <label class="control-label col-sm-2 text-right">姓名</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="contact_name" value="{{ old('contact_name', $address->contact_name) }}">
                                 </div>
                             </div>
                             <div class="form-group" style="display: flex">
-                                <label class="control-label col-sm-2">电话</label>
+                                <label class="control-label col-sm-2 text-right">电话</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" name="contact_phone" value="{{ old('contact_phone', $address->contact_phone) }}">
                                 </div>
