@@ -46,8 +46,12 @@ Route::group(['middleware' => 'auth'], function() {
         Route::delete('products/{product}/favorite', 'ProductsController@disfavor')->name('products.disfavor');
         // 商品-收藏列表
         Route::get('products/favorites', 'ProductsController@favorites')->name('products.favorites');
+        // 购物车-列表
+        Route::get('cart', 'CartController@index')->name('cart.index');
         // 购物车-加入
-        Route::post('cart', 'CartController@store')->name('cart.store');
+        Route::post('cart', 'CartController@add')->name('cart.add');
+        // 购物车-移除商品
+        Route::delete('cart/{sku}', 'CartController@remove')->name('cart.remove');
     });
 });
 

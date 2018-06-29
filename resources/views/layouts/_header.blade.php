@@ -20,6 +20,9 @@
                     <li><a class="nav-link" href="{{ route('login') }}">登录</a></li>
                     <li><a class="nav-link" href="{{ route('register') }}">注册</a></li>
                 @else
+                    <li class="nav-item">
+                        <a href="{{ route('cart.index') }}" class="shopping-cart"><span class="fa fa-shopping-cart fa-lg" aria-hidden="true"></span></a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">

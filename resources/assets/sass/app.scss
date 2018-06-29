@@ -4,6 +4,8 @@
 @import "variables";
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+// Font-awesome
+@import "~font-awesome/scss/font-awesome";
 
 // 通用样式
 body {
@@ -19,6 +21,16 @@ body {
   margin-bottom: 40px;
   margin-top: 0px;
 }
+
+/* 购物车样式 */
+.nav-item {
+  .shopping-cart{
+    line-height: 39px;
+    margin-right: 20px;
+    color: #666666;
+  }
+}
+
 
 /* 底部样式 */
 html {
@@ -239,6 +251,53 @@ body {
       border-right: 1px solid #eee;
       border-bottom: 1px solid #eee;
       padding: 20px;
+    }
+  }
+}
+
+// 查看购物车
+.cart-index-page {
+  .product_list {
+    .preview {
+      img {
+        max-width: 80px;
+        max-height: 80px;
+      }
+      margin-right: 20px;
+    }
+
+    .product_info {
+      display: flex;
+      flex-drection: row;
+      align-items: flex-start;
+      font-size: 12px;
+      .product_title, .sku_title, .warning {
+        display: block;
+      }
+
+      .product_title a {
+        color: #3c3c3c;
+        font-size: 14px;
+      }
+      .not_on_sale {
+        .product_title, .sku_title {
+          text-decoration: line-through;
+        }
+        .warning {
+          color: red;
+        }
+      }
+    }
+
+    .price {
+      font-size: 12px;
+      font-weight: 700;
+      color: #3c3c3c;
+    }
+
+    input.amount {
+      width: 60px;
+      border-radius: 0 !important;
     }
   }
 }
