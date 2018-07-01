@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 class CartItem extends Model
 {
     //定义表名
-    public $timestamps = false;
+    public $timestamps = true;
 
     /**
      * 可以分配的属性。
