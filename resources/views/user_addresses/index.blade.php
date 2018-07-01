@@ -5,7 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-lg-10   ">
             <div class="card">
-                <div class="card-header">收货地址列表</div>
+                <div class="card-header">收货地址列表
+                    <div class="btn-group pull-right">
+                        <a href="{{ route('user_addresses.create') }}" class="btn btn-primary btn-sm">新增</a>
+                    </div>
+                </div>
                 <div class="card-body">
                     <table class="table table-bordered table-striped">
                         <thead>

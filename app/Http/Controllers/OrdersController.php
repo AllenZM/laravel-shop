@@ -20,6 +20,23 @@ use Illuminate\Http\Request;
 class OrdersController extends Controller
 {
     /**
+     * 订单列表
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index(Request $request)
+    {
+        $orders = Order::query()
+            // 使用 with 方法预加载， 避免 N + 1 问题
+            ->with(['items.product', 'items.productSku'])
+            ->where('user_id', $request->user()->id)
+            ->orderBy('created_at', 'DESC')
+            ->paginate();
+        return view('orders.index', ['orders' => $orders]);
+    }
+
+    /**
      * 插入订单
      *
      * @param OrderRequest $request

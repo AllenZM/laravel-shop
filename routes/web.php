@@ -52,10 +52,10 @@ Route::group(['middleware' => 'auth'], function() {
         Route::post('cart', 'CartController@add')->name('cart.add');
         // 购物车-移除商品
         Route::delete('cart/{sku}', 'CartController@remove')->name('cart.remove');
-        // 订单-插入订单
-        Route::post('orders', 'OrdersController@store')->name('orders.store');
         // 订单-订单列表
         Route::get('orders', 'OrdersController@index')->name('orders.index');
+        // 订单-插入订单
+        Route::post('orders', 'OrdersController@store')->name('orders.store');
     });
 });
 
