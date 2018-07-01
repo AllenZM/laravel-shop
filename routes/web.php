@@ -15,6 +15,14 @@
 //Route::get('/', 'PagesController@root')->name('root');
 Route::redirect('/', '/products')->name('root');
 
+Route::get('ali_pay', function (){
+    return app('ali_pay')->web([
+        'out_trade_no' => time(),
+        'total_amount' => '1',
+        'subject' => 'test subject - 测试',
+    ]);
+});
+
 // 用户认证
 Auth::routes();
 
