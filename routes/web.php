@@ -15,14 +15,6 @@
 //Route::get('/', 'PagesController@root')->name('root');
 Route::redirect('/', '/products')->name('root');
 
-Route::get('ali_pay', function (){
-    return app('ali_pay')->web([
-        'out_trade_no' => time(),
-        'total_amount' => '1',
-        'subject' => 'test subject - 测试',
-    ]);
-});
-
 // 用户认证
 Auth::routes();
 
@@ -66,6 +58,10 @@ Route::group(['middleware' => 'auth'], function() {
         Route::post('orders', 'OrdersController@store')->name('orders.store');
         // 订单-订单详情
         Route::get('orders/{order}', 'OrdersController@show')->name('orders.show');
+        // 订单支付-支付宝支付
+        Route::get('payment/{order}/ali_pay', 'PaymentController@payByAliPay')->name('payment.ali_pay');
+        // 订单支付-支付宝支付前端回调
+        Route::get('payment/ali_pay/return', 'PaymentController@aliPayReturn')->name('payment.ali_pay.return');
     });
 });
 
@@ -73,3 +69,5 @@ Route::group(['middleware' => 'auth'], function() {
 Route::get('products', 'ProductsController@index')->name('products.index');
 // 商品-详情
 Route::get('products/{product}', 'ProductsController@show')->name('products.show');
+// 订单支付-支付宝支付服务器回调
+Route::post('payment/ali_pay/notify', 'PaymentController@alipayNotify')->name('payment.ali_pay.notify');
