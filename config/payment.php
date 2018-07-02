@@ -12,7 +12,7 @@ return [
     ],
     // 微信支付
     'wechat_pay' => [
-        'app_id' => '', // 公众号 app id
+        'app_id' => env('WECHAT_PAY_APP_ID', ''), // 公众号 app id
         'mch_id' => '', //商户号
         'key' => '',    //API 密钥
         'cert_client' => resource_path('wechat_pay/apiclient_cert.pem'),
