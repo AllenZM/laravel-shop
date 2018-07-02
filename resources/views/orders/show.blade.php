@@ -43,6 +43,18 @@
                             <div class="line"><div class="line-label">收货地址：</div><div class="line-value">{{ join(' ', $order->address) }}</div></div>
                             <div class="line"><div class="line-label">订单备注：</div><div class="line-value">{{ $order->remark ?: '-' }}</div></div>
                             <div class="line"><div class="line-label">订单编号：</div><div class="line-value">{{ $order->no }}</div></div>
+                            <!-- 输出物流状态 -->
+                            <div class="line">
+                                <div class="line-label">物流状态：</div>
+                                <div class="line-value">{{ \App\Models\Order::$shipStatusMap[$order->ship_status] }}</div>
+                            </div>
+                            <!-- 如果有物流信息则展示 -->
+                            @if($order->ship_data)
+                                <div class="line">
+                                    <div class="line-label">物流信息：</div>
+                                    <div class="line-value">{{ $order->ship_data['express_company'] }} {{ $order->ship_data['express_no'] }}</div>
+                                </div>
+                            @endif
                         </div>
                         <div class="order-summary text-right">
                             <div class="total-amount">
@@ -74,6 +86,13 @@
                                 </div>
                             @endif
                             <!-- 支付按钮结束 -->
+                            <!-- 订单已支付，且退款状态不是未退款时展示退款信息 -->
+                            @if($order->ship_status === \App\Models\Order::SHIP_STATUS_DELIVERED)
+                                <div class="receive-button">
+                                    <!-- 将原本的表单替换成下面这个按钮 -->
+                                    <button type="submit" id="btn-receive" class="btn btn-sm btn-success">确认收货</button>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -97,6 +116,30 @@
                         location.reload();
                     }
                 });
+            });
+
+            // 确认收货按钮点击时间
+            $('#btn-receive').click(function () {
+                // 弹出确认框
+                swal({
+                    title: "确认已经收到商品？",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                    buttons: ['取消', '确认收货'],
+                })
+                    .then(function (ret) {
+                        // 如果点击取消按钮则不做任何操作
+                        if (!ret) {
+                            return;
+                        }
+                        // ajax 提交确认操作
+                        axios.post('{{ route('orders.received', [$order->id]) }}')
+                            .then(function () {
+                                // 刷新页面
+                                location.reload();
+                            })
+                    });
             });
         });
     </script>
