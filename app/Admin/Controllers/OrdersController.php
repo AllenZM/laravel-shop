@@ -72,6 +72,22 @@ class OrdersController extends Controller
     }
 
     /**
+     * 订单详情
+     *
+     * @param Order $order
+     * @return Content
+     */
+    public function show(Order $order)
+    {
+        return Admin::content(function (Content $content) use ($order){
+            $content->header('订单');
+            $content->description('详情');
+            // body 方法可以接受 Laravel 的试图为参数
+            $content->body(view('admin.orders.show', ['order' => $order]));
+        });
+    }
+
+    /**
      * 生成器
      * Make a grid builder.
      *
@@ -99,6 +115,7 @@ class OrdersController extends Controller
                 // 禁用删除和编辑按钮
                 $actions->disableDelete();
                 $actions->disableEdit();
+                $actions->append('<a class="btn btn-xs btn-primary" href="'.route('admin.orders.show', [$actions->getKey()]).'">查看</a>');
             });
             $grid->tools(function ($tools) {
                 // 禁用批量删除按钮
