@@ -24,4 +24,7 @@ Route::group([
     $router->put('products/{id}', 'ProductsController@update');
     $router->delete('products/{id}', 'ProductsController@destroy');
 
+    // 产品管理/订单管理
+    $router->get('orders', 'OrdersController@index')->name('admin.orders.index');
+
 });
