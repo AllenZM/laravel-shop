@@ -58,6 +58,10 @@ Route::group(['middleware' => 'auth'], function() {
         Route::post('orders', 'OrdersController@store')->name('orders.store');
         // 订单-订单详情
         Route::get('orders/{order}', 'OrdersController@show')->name('orders.show');
+        // 订单-订单评论展示
+        Route::get('orders/{order}/review', 'OrdersController@review')->name('orders.review.show');
+        // 订单-订单评论提交
+        Route::post('orders/{order}/review', 'OrdersController@sendReview')->name('orders.review.store');
         // 订单-确认收货
         Route::post('orders/{order}/received', 'OrdersController@received')->name('orders.received');
         // 订单支付-支付宝支付

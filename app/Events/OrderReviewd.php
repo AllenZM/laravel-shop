@@ -1,9 +1,9 @@
 <?php
 /**
- * Name: 订单支付事件.
+ * Name: 订单评论事件.
  * User: 董坤鸿
- * Date: 2018/7/2
- * Time: 下午4:7
+ * Date: 2018/7/3
+ * Time: 下午1:40
  */
 
 namespace App\Events;
@@ -17,7 +17,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class OrderPaid
+class OrderReviewd
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -27,7 +27,7 @@ class OrderPaid
      * 初始化
      * Create a new event instance.
      *
-     * OrderPaid constructor.
+     * OrderReviewd constructor.
      * @param Order $order
      */
     public function __construct(Order $order)

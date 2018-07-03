@@ -61,7 +61,15 @@
                                                                 否则订单将自动关闭
                                                             @endif
                                                         </td>
-                                                        <td rowspan="{{ count($order->items) }}" class="text-center"><a class="btn btn-primary btn-xs" href="{{ route('orders.show', ['order' => $order->id]) }}">查看订单</a></td>
+                                                        <td rowspan="{{ count($order->items) }}" class="text-center">
+                                                            <a class="btn btn-primary btn-sm" href="{{ route('orders.show', ['order' => $order->id]) }}">查看订单</a>
+                                                            <!-- 评价入口 -->
+                                                            @if($order->paid_at)
+                                                                <a class="btn btn-success btn-sm" href="{{ route('orders.review.show', ['order' => $order->id]) }}">
+                                                                    {{ $order->reviewed ? '查看评价' : '评价' }}
+                                                                </a>
+                                                            @endif
+                                                        </td>
                                                     @endif
                                                 </tr>
                                             @endforeach
