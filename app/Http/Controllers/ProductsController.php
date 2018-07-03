@@ -51,6 +51,8 @@ class ProductsController extends Controller
                     $builder->orderBy($m[1], $m[2]);
                 }
             }
+        } else {
+            $builder->orderBy('created_at', 'DESC');
         }
 
         $products = $builder->paginate(16);

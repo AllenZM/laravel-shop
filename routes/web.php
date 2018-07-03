@@ -64,6 +64,8 @@ Route::group(['middleware' => 'auth'], function() {
         Route::post('orders/{order}/review', 'OrdersController@sendReview')->name('orders.review.store');
         // 订单-确认收货
         Route::post('orders/{order}/received', 'OrdersController@received')->name('orders.received');
+        // 订单-申请退款
+        Route::post('orders/{order}/apply_refund', 'OrdersController@applyRefund')->name('orders.apply_refund');
         // 订单支付-支付宝支付
         Route::get('payment/{order}/ali_pay', 'PaymentController@payByAliPay')->name('payment.ali_pay');
         // 订单支付-支付宝支付前端回调

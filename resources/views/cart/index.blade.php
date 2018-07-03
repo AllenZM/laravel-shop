@@ -102,7 +102,7 @@
                     if (!willDelete) {
                         return;
                     }
-                    axios.delete('/cart' + id)
+                    axios.delete('/cart/' + id)
                         .then(function () {
                             location.reload();
                         })
