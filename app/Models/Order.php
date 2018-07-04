@@ -120,6 +120,16 @@ class Order extends Model
     }
 
     /**
+     * 获取优惠券
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function couponCode()
+    {
+        return $this->belongsTo(CouponCode::class);
+    }
+
+    /**
      * 生成订单流水号
      *
      * @return bool|string
