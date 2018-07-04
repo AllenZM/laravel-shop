@@ -14,5 +14,6 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         'payment/ali_pay/notify',
         'payment/wechat_pay/notify',
+        'payment/wechat_pay/refund_notify',
     ];
 }
