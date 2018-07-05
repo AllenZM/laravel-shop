@@ -46,12 +46,14 @@ Route::group(['middleware' => 'auth'], function() {
         Route::delete('products/{product}/favorite', 'ProductsController@disfavor')->name('products.disfavor');
         // 商品-收藏列表
         Route::get('products/favorites', 'ProductsController@favorites')->name('products.favorites');
+
         // 购物车-列表
         Route::get('cart', 'CartController@index')->name('cart.index');
         // 购物车-加入
         Route::post('cart', 'CartController@add')->name('cart.add');
         // 购物车-移除商品
         Route::delete('cart/{sku}', 'CartController@remove')->name('cart.remove');
+
         // 订单-订单列表
         Route::get('orders', 'OrdersController@index')->name('orders.index');
         // 订单-插入订单
@@ -66,12 +68,16 @@ Route::group(['middleware' => 'auth'], function() {
         Route::post('orders/{order}/received', 'OrdersController@received')->name('orders.received');
         // 订单-申请退款
         Route::post('orders/{order}/apply_refund', 'OrdersController@applyRefund')->name('orders.apply_refund');
+
         // 订单支付-支付宝支付
         Route::get('payment/{order}/ali_pay', 'PaymentController@payByAliPay')->name('payment.ali_pay');
         // 订单支付-支付宝支付前端回调
         Route::get('payment/ali_pay/return', 'PaymentController@aliPayReturn')->name('payment.ali_pay.return');
         // 订单支付-微信支付
         Route::get('payment/{order}/wechat_pay', 'PaymentController@payByWeChat')->name('payment.wechat_pay');
+
+        // 优惠券-详情
+        Route::get('coupon_codes/{code}', 'CouponCodesController@show')->name('coupon_codes.show');
     });
 });
 
