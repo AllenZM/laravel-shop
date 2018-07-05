@@ -99,11 +99,27 @@ class CouponCode extends Model
     /**
      * 检查优惠券
      *
+     * @param User $user
      * @param null $orderAmount
      * @throws CouponCodeUnavailableException
      */
-    public function checkAvailable($orderAmount = null)
+    public function checkAvailable(User $user, $orderAmount = null)
     {
+        $used = Order::where('user_id', $user->id)
+            ->where('coupon_code_id', $this->id)
+            ->where(function($query) {
+                $query->where(function($query) {
+                    $query->whereNull('paid_at')
+                        ->where('closed', false);
+                })->orWhere(function($query) {
+                    $query->whereNotNull('paid_at')
+                        ->where('refund_status', Order::REFUND_STATUS_PENDING);
+                });
+            })
+            ->exists();
+        if ($used){
+            throw new CouponCodeUnavailableException('您已经使用过这张优惠券了');
+        }
 
         if (!$this->enabled) {
             throw new CouponCodeUnavailableException('优惠券不存在');
