@@ -22,7 +22,9 @@ class CheckIfEmailVerified
     public function handle($request, Closure $next)
     {
         if (!$request->user()->email_verified) {
-            return redirect(route('email_verify_notice'));
+            if ($request->expectsJson()) {
+                return response()->json(['msg' => '请先验证邮箱'], 400);
+            }
         }
         return $next($request);
     }

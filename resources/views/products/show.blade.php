@@ -108,6 +108,8 @@
                         // 如果返回码是 401 代表没登陆
                         if (error.response && error.response.status === 401) {
                             swal('请先登录', '', 'error');
+                        } else if (error.response && error.response.data.message) {
+                            swal(error.response.data.message, '', 'error');
                         } else {
                             // 其他情况应该想系统挂了
                             swal('系统错误', '', 'error');
