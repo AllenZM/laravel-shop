@@ -9,10 +9,13 @@
         "encore/laravel-admin": "1.5.*",
         "endroid/qr-code": "^3.2",
         "fideloper/proxy": "^4.0",
+        "geoip2/geoip2": "^2.9",
+        "itsgoingd/clockwork": "^2.2",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
         "overtrue/laravel-lang": "^3.0",
         "predis/predis": "^1.1",
+        "torann/geoip": "^1.0",
         "yansongda/pay": "^2.3"
     },
     "require-dev": {

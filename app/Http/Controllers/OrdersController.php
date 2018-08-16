@@ -97,7 +97,7 @@ class OrdersController extends Controller
         // 校验权限
         $this->authorize('own', $order);
 
-        // 判断订单的发货状态顺丰为已经发货
+        // 判断订单的发货状态是否为已经发货
         if ($order->ship_status !== Order::SHIP_STATUS_DELIVERED){
             throw new InvalidRequestException('发货状态不正确');
         }
