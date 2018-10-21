@@ -43,6 +43,16 @@ class Product extends Model
     }
 
     /**
+     * 获取所属分类
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
+    /**
      * 返回商品对应的图片
      *
      * @return mixed
