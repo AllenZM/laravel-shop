@@ -54,4 +54,20 @@ Route::group([
     // 编辑优惠券
     $router->delete('coupon_codes/{id}', 'CouponCodesController@destroy');
 
+    // 产品管理/类目管理
+    // 类目列表
+    $router->get('categories', 'CategoriesController@index');
+    // 创建类目
+    $router->get('categories/create', 'CategoriesController@create');
+    // 编辑类目
+    $router->get('categories/{id}/edit', 'CategoriesController@edit');
+    // 插入类目
+    $router->post('categories', 'CategoriesController@store');
+    // 修改类目
+    $router->put('categories/{id}', 'CategoriesController@update');
+    // 删除类目
+    $router->delete('categories/{id}', 'CategoriesController@destroy');
+    // 下拉搜索框
+    $router->get('api/categories', 'CategoriesController@apiIndex');
+
 });
