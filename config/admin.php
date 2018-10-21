@@ -174,7 +174,7 @@ return [
      * 页面底部展示的版本.
      * Version displayed in footer.
      */
-    'version' => '1.5.x-dev',
+    'version' => '1.0.0',
 
     /**
      * 扩展设置.

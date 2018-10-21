@@ -35,6 +35,7 @@ class User extends Authenticatable
 
     /**
      * 应该被转换成原生类型的属性。
+     * Properties that should be converted to native types.
      *
      * @var array
      */
