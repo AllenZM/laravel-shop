@@ -13,6 +13,14 @@ use Illuminate\Support\Str;
 
 class Product extends Model
 {
+    const TYPE_NORMAL = 'normal';
+    const TYPE_CROWDFUNDING = 'crowdfunding';
+
+    public static $typeMap = [
+        self::TYPE_NORMAL => '普通商品',
+        self::TYPE_CROWDFUNDING => '众筹商品',
+    ];
+
     /**
      * 可以分配的属性。
      *
@@ -20,7 +28,7 @@ class Product extends Model
      */
     protected $fillable = [
         'title', 'description', 'image', 'on_sale',
-        'rating', 'sold_count', 'review_count', 'price'
+        'rating', 'sold_count', 'review_count', 'price', 'type'
     ];
 
     /**
@@ -50,6 +58,16 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
+    /**
+     * 获取众筹
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function crowdfunding()
+    {
+        return $this->hasOne(CrowdfundingProduct::class, 'product_id', 'id');
     }
 
     /**
