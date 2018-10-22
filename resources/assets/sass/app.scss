@@ -11,6 +11,7 @@
 body {
   font-family: Hiragino Sans GB, "Hiragino Sans GB", Helvetica, "Microsoft YaHei", Arial, sans-serif;
 }
+
 .help-block {
   display: block;
   margin-top: 5px;
@@ -30,13 +31,12 @@ body {
 
 /* 购物车样式 */
 .nav-item {
-  .shopping-cart{
+  .shopping-cart {
     line-height: 39px;
     margin-right: 20px;
     color: #666666;
   }
 }
-
 
 /* 底部样式 */
 html {
@@ -189,8 +189,8 @@ body {
     display: flex;
     flex-drection: row;
     font-size: 12px;
-    &>div {
-      &.sold_count,&.review_count {
+    & > div {
+      &.sold_count, &.review_count {
         border-right: 1px dotted #c9c9c9;
       }
       width: 33%;
@@ -203,7 +203,7 @@ body {
     }
   }
   .skus {
-    &>label {
+    & > label {
       color: #999;
       font-size: 12px;
       padding: 0 10px 0 10px;
@@ -254,7 +254,7 @@ body {
     padding-left: 44px;
   }
 
-  .product-detail  {
+  .product-detail {
     .nav.nav-tabs > li > a {
       border-radius: 0 !important;
     }
@@ -416,7 +416,7 @@ body {
   }
   .order-summary {
     width: 50%;
-    font-family: Verdana,Tahoma,Helvetica,Arial;
+    font-family: Verdana, Tahoma, Helvetica, Arial;
     .total-amount {
       font-weight: bolder;
       font-size: 14px;
@@ -484,7 +484,7 @@ body {
       & > input {
         position: absolute;
         top: -9999px;
-        clip: rect(0,0,0,0);
+        clip: rect(0, 0, 0, 0);
       }
       & > label {
         float: right;
@@ -519,6 +519,45 @@ body {
   }
 
   textarea {
-    border-radius: 0px;
+    border-radius: 0;
+  }
+}
+
+// 无限极菜单
+.dropdown-submenu {
+  position: relative;
+  & > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    border-radius: 0 6px 6px 6px;
+  }
+  &:hover > .dropdown-menu {
+    display: block;
+  }
+  & > a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+  }
+  &:hover > a:after {
+    border-left-color: #fff;
+  }
+  &.pull-left {
+    float: none;
+    & > .dropdown-menu {
+      left: -100%;
+      margin-left: 10px;
+      border-radius: 6px 0 6px 6px;
+    }
   }
 }

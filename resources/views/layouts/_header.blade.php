@@ -10,7 +10,17 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- 导航左侧 -->
             <ul class="navbar-nav mr-auto">
-
+                <!-- 顶部类目菜单开始 -->
+                @if(isset($category_tree))
+                    <li class="nav-item dropdown">
+                        <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">所有类目 <b class="caret"></b></a>
+                        <ul class="dropdown-menu animated fadeInRight multi-level">
+                            <!-- 遍历 $categoryTree 集合，将集合中的每一项以 $category 变量注入 layouts._category_item 模板中并渲染 -->
+                            @each('layouts._category_item', $category_tree, 'category')
+                        </ul>
+                    </li>
+                @endif
+                <!-- 顶部类目菜单结束 -->
             </ul>
 
             <!-- 导航右侧 -->
