@@ -40,7 +40,7 @@ Route::group([
     // 订单退款
     $router->post('orders/{order}/refund', 'OrdersController@handleRefund')->name('admin.orders.handle_refund');
 
-    // 优惠券管理
+    // 产品管理/优惠券管理
     // 优惠券列表
     $router->get('coupon_codes', 'CouponCodesController@index');
     // 创建优惠券
@@ -70,4 +70,15 @@ Route::group([
     // 下拉搜索框
     $router->get('api/categories', 'CategoriesController@apiIndex');
 
+    // 产品管理/众筹商品
+    // 众筹列表
+    $router->get('crowdfunding_products', 'CrowdfundingProductsController@index');
+    // 创建众筹
+    $router->get('crowdfunding_products/create', 'CrowdfundingProductsController@create');
+    // 插入众筹
+    $router->post('crowdfunding_products', 'CrowdfundingProductsController@store');
+    // 编辑众筹
+    $router->get('crowdfunding_products/{id}/edit', 'CrowdfundingProductsController@edit');
+    // 修改众筹
+    $router->put('crowdfunding_products/{id}', 'CrowdfundingProductsController@update');
 });

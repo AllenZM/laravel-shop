@@ -21,7 +21,7 @@
 
 LOCK TABLES `lnmp_admin_menu` WRITE;
 /*!40000 ALTER TABLE `lnmp_admin_menu` DISABLE KEYS */;
-INSERT INTO `lnmp_admin_menu` VALUES (1,0,1,'首页','fa-bar-chart','/',NULL,'2018-06-27 21:45:17'),(2,0,8,'系统管理','fa-tasks',NULL,NULL,'2018-10-21 22:22:27'),(3,2,9,'管理员管理','fa-users','auth/users',NULL,'2018-10-21 22:22:27'),(4,2,10,'角色管理','fa-user','auth/roles',NULL,'2018-10-21 22:22:27'),(5,2,11,'权限管理','fa-ban','auth/permissions',NULL,'2018-10-21 22:22:27'),(6,2,12,'菜单管理','fa-bars','auth/menu',NULL,'2018-10-21 22:22:27'),(7,2,13,'操作日志','fa-history','auth/logs',NULL,'2018-10-21 22:22:27'),(8,0,2,'用户管理','fa-users','/users','2018-06-27 21:44:06','2018-06-27 21:45:17'),(9,0,3,'产品管理','fa-cubes',NULL,'2018-06-27 23:38:52','2018-06-27 23:39:53'),(10,9,5,'商品管理','fa-cube','/products','2018-06-27 23:40:36','2018-10-21 22:22:27'),(11,9,6,'订单管理','fa-rmb','/orders','2018-06-29 12:39:25','2018-10-21 22:22:27'),(12,9,7,'优惠券管理','fa-tags','/coupon_codes','2018-07-05 01:08:59','2018-10-21 22:22:27'),(13,9,4,'商品类目','fa-align-justify','/categories','2018-10-21 22:18:34','2018-10-21 22:22:27');
+INSERT INTO `lnmp_admin_menu` VALUES (1,0,1,'首页','fa-bar-chart','/',NULL,'2018-06-27 21:45:17'),(2,0,9,'系统管理','fa-tasks',NULL,NULL,'2018-10-22 15:28:16'),(3,2,10,'管理员管理','fa-users','auth/users',NULL,'2018-10-22 15:28:16'),(4,2,11,'角色管理','fa-user','auth/roles',NULL,'2018-10-22 15:28:16'),(5,2,12,'权限管理','fa-ban','auth/permissions',NULL,'2018-10-22 15:28:16'),(6,2,13,'菜单管理','fa-bars','auth/menu',NULL,'2018-10-22 15:28:16'),(7,2,14,'操作日志','fa-history','auth/logs',NULL,'2018-10-22 15:28:16'),(8,0,2,'用户管理','fa-users','/users','2018-06-27 21:44:06','2018-06-27 21:45:17'),(9,0,3,'产品管理','fa-cubes',NULL,'2018-06-27 23:38:52','2018-06-27 23:39:53'),(10,9,5,'商品管理','fa-cube','/products','2018-06-27 23:40:36','2018-10-21 22:22:27'),(11,9,7,'订单管理','fa-rmb','/orders','2018-06-29 12:39:25','2018-10-22 15:28:16'),(12,9,8,'优惠券管理','fa-tags','/coupon_codes','2018-07-05 01:08:59','2018-10-22 15:28:16'),(13,9,4,'商品类目','fa-align-justify','/categories','2018-10-21 22:18:34','2018-10-21 22:22:27'),(14,9,6,'众筹商品','fa-flag-checkered','/crowdfunding_products','2018-10-22 15:28:00','2018-10-22 15:28:16');
 /*!40000 ALTER TABLE `lnmp_admin_menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -103,4 +103,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-21 14:45:09
+-- Dump completed on 2018-10-22  7:57:47
