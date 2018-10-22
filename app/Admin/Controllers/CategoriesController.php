@@ -22,6 +22,7 @@ class CategoriesController extends Controller
     use HasResourceActions;
 
     /**
+     * 商品类目列表
      * Index interface.
      *
      * @param Content $content
@@ -36,21 +37,7 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Show interface.
-     *
-     * @param mixed $id
-     * @param Content $content
-     * @return Content
-     */
-    public function show($id, Content $content)
-    {
-        return $content
-            ->header('商品类目')
-            ->description('查看')
-            ->body($this->detail($id));
-    }
-
-    /**
+     * 编辑商品类目
      * Edit interface.
      *
      * @param mixed $id
@@ -66,6 +53,7 @@ class CategoriesController extends Controller
     }
 
     /**
+     * 创建商品类目
      * Create interface.
      *
      * @param Content $content
@@ -80,6 +68,7 @@ class CategoriesController extends Controller
     }
 
     /**
+     * 生成器
      * Make a grid builder.
      *
      * @return Grid
@@ -104,28 +93,7 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Make a show builder.
-     *
-     * @param mixed $id
-     * @return Show
-     */
-    protected function detail($id)
-    {
-        $show = new Show(Category::findOrFail($id));
-
-        $show->id('Id');
-        $show->name('Name');
-        $show->parent_id('Parent id');
-        $show->is_directory('Is directory');
-        $show->level('Level');
-        $show->path('Path');
-        $show->created_at('Created at');
-        $show->updated_at('Updated at');
-
-        return $show;
-    }
-
-    /**
+     * 表单生成器
      * Make a form builder.
      *
      * @param bool $isEditing
