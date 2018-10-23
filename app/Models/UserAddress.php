@@ -31,6 +31,13 @@ class UserAddress extends Model
     ];
 
     /**
+     * 追加到模型数组表单的访问器.
+     *
+     * @var array
+     */
+    protected $appends = ['full_address'];
+
+    /**
      * 获取用户信息
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
