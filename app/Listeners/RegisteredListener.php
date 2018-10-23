@@ -6,7 +6,6 @@
  * Time: 下午8:11
  */
 
-
 namespace App\Listeners;
 
 use App\Notifications\EmailVerificationNotification;

@@ -23,6 +23,9 @@ class Order extends Model
     const SHIP_STATUS_DELIVERED = 'delivered';  // 已发货
     const SHIP_STATUS_RECEIVED = 'received';    // 已收货
 
+    const TYPE_NORMAL = 'normal';       // 普通商品订单
+    const TYPE_CROWDFUNDING = 'crowdfunding'; // 众筹商品订单
+
     /**
      * 退款状态
      *
@@ -48,12 +51,22 @@ class Order extends Model
     ];
 
     /**
+     * 商品类型
+     *
+     * @var array
+     */
+    public static $typeMap = [
+        self::TYPE_NORMAL => '普通商品订单',
+        self::TYPE_CROWDFUNDING => '众筹商品订单',
+    ];
+
+    /**
      * 可以分配的属性。
      *
      * @var array
      */
     protected $fillable = [
-        'no', 'address', 'total_amount', 'remark', 'paid_at', 'payment_method', 'payment_no',
+        'type', 'no', 'address', 'total_amount', 'remark', 'paid_at', 'payment_method', 'payment_no',
         'refund_status', 'refund_no', 'closed', 'reviewed', 'ship_status', 'ship_data', 'extra',
     ];
 
