@@ -54,6 +54,8 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+    'ngrok_url' => env('NGROK_URL'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
