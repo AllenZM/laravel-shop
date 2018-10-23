@@ -12,6 +12,7 @@ use App\Exceptions\InternalException;
 use App\Exceptions\InvalidRequestException;
 use App\Http\Requests\Admin\HandleRefundRequest;
 use App\Models\CrowdfundingProduct;
+use App\Services\OrderService;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use Encore\Admin\Form;
@@ -19,12 +20,10 @@ use Encore\Admin\Grid;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
-use Encore\Admin\Controllers\ModelForm;
 use Illuminate\Support\Facades\Auth;
 
 class OrdersController extends Controller
 {
-    use ModelForm;
 
     /**
      * 订单列表
@@ -194,11 +193,12 @@ class OrdersController extends Controller
      *
      * @param Order $order
      * @param HandleRefundRequest $request
+     * @param OrderService $orderService
      * @return Order
      * @throws InternalException
      * @throws InvalidRequestException
      */
-    public function handleRefund(Order $order, HandleRefundRequest $request)
+    public function handleRefund(Order $order, HandleRefundRequest $request, OrderService $orderService)
     {
         // 判断订单状态十分正确
         if ($order->refund_status !== Order::REFUND_STATUS_APPLIED) {
@@ -208,7 +208,7 @@ class OrdersController extends Controller
         if ($request->input('agree')) {
             // 同意退款的逻辑
             // 调用退款逻辑
-            $this->_refundOrder($order);
+            $orderService->refundOrder($order);
         } else {
             // 拒绝退款理由到订单的 extra 字段中
             $extra = $order->extra ?: [];
@@ -222,86 +222,5 @@ class OrdersController extends Controller
 
         return $order;
     }
-
-    /**
-     * 退款逻辑
-     *
-     * @param Order $order
-     * @throws InternalException
-     */
-    protected function _refundOrder(Order $order)
-    {
-        // 判断该订单的支付方式
-        switch ($order->payment_method) {
-            case 'wechatpay':
-                // 微信支付
-                // 生成退款订单号
-                $refundNo = Order::getAvailableRefundNo();
-                app('wechat_pay')->refund([
-                    'out_trade_no' => $order->no, // 之前的订单流水号
-                    'total_fee' => $order->total_amount * 100, //原订单金额，单位分
-                    'refund_fee' => $order->total_amount * 100, // 要退款的订单金额，单位分
-                    'out_refund_no' => $refundNo, // 退款订单号
-                    // 微信支付的退款结果并不是实时返回的，而是通过退款回调来通知，因此这里需要配上退款回调接口地址
-                    'notify_url' => ngrok_url('payment.wechat_pay.refund_notify') // 由于是开发环境，需要配成 requestbin 地址
-                ]);
-                // 将订单状态改成退款中
-                $order->update([
-                    'refund_no' => $refundNo,
-                    'refund_status' => Order::REFUND_STATUS_PROCESSING,
-                ]);
-                break;
-            case 'alipay':
-                // 用我们刚刚写的方法来生成一个退款订单号
-                $refundNo = Order::getAvailableRefundNo();
-                // 调用支付宝支付实例的 refund 方法
-                $result = app('ali_pay')->refund([
-                    'out_trade_no' => $order->no, // 之前的订单流水号
-                    'refund_amount' => $order->total_amount, // 退款金额，单位元
-                    'out_request_no' => $refundNo, // 退款订单号
-                ]);
-                // 根据支付宝的稳定，如果返回值里有 sub_code 字段谁退款失败
-                if ($result->sub_code) {
-                    // 将退款失败的保存存入 extra 字段
-                    $extra = $order->extra;
-                    $extra['refund_failed_code'] = $result->sub_code;
-                    // 将订单的退款状态标记为退款失败
-                    $order->update([
-                        'refund_no' => $refundNo,
-                        'refund_status' => Order::REFUND_STATUS_FAILED,
-                        'extra' => $extra,
-                    ]);
-                } else {
-                    // 将订单的退款状态标记为退款成功并保存退款订单号
-                    $order->update([
-                        'refund_no' => $refundNo,
-                        'refund_status' => Order::REFUND_STATUS_SUCCESS,
-                    ]);
-                }
-                break;
-            default:
-                // 原则上不可能出现，这个只是为了代码健壮性
-                throw new InternalException('未知订单支付方式：' . $order->payment_method);
-                break;
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
