@@ -86,6 +86,21 @@ if (!function_exists('ngrok_url')) {
     }
 }
 
+if (!function_exists('big_number')) {
+
+    /**
+     * 精度计算
+     *
+     * @param $number
+     * @param int $scale
+     * @return \Moontoast\Math\BigNumber
+     */
+    function big_number($number, $scale = 2)
+    {
+        return new \Moontoast\Math\BigNumber($number, $scale);
+    }
+}
+
 
 
 
