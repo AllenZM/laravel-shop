@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="row justify-content-center">
-        <div class="col-lg-10   ">
+        <div class="col-lg-10">
             <div class="card">
                 <div class="card-header">商品评价
                     <a class="pull-right" href="{{ route('orders.index') }}">返回订单列表</a>

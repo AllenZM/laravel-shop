@@ -50,6 +50,9 @@
                             <li>
                                 <a class="dropdown-item" href="{{ route('orders.index') }}">我的订单</a>
                             </li>
+                            <li>
+                                <a class="dropdown-item" href="{{ route('installments.index') }}">分期付款</a>
+                            </li>
                             <li class="dropdown-divider"></li>
                             <li>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">退出登录</a>
