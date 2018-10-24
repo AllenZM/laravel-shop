@@ -20,7 +20,7 @@ class CreateInstallmentsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedInteger('order_id')->comment('订单ID');
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
-            $table->decimal('total_amount')->comment('总本金');
+            $table->decimal('total_amount')->nullable()->comment('总本金');
             $table->unsignedInteger('count')->comment('还款期数');
             $table->float('fee_rate')->comment('手续费率');
             $table->float('fine_rate')->comment('逾期费率');

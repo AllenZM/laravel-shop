@@ -23,7 +23,7 @@ class Installment extends Model
     ];
 
     protected $fillable = [
-        'no', 'total_amount' => 'count', 'fee_rate', 'fine_rate', 'status'
+        'no', 'total_amount', 'count', 'fee_rate', 'fine_rate', 'status'
     ];
 
     protected static function boot()

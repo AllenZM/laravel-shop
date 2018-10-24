@@ -75,6 +75,8 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('payment/ali_pay/return', 'PaymentController@aliPayReturn')->name('payment.ali_pay.return');
         // 订单支付-微信支付
         Route::get('payment/{order}/wechat_pay', 'PaymentController@payByWeChat')->name('payment.wechat_pay');
+        // 订单支付-分期支付
+        Route::post('payment/{order}/installment', 'PaymentController@payByInstallment')->name('payment.installment');
 
         // 优惠券-详情
         Route::get('coupon_codes/{code}', 'CouponCodesController@show')->name('coupon_codes.show');
