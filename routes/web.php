@@ -88,6 +88,12 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('installments', 'InstallmentsController@index')->name('installments.index');
         // 分期付款详情
         Route::get('installments/{installment}', 'InstallmentsController@show')->name('installments.show');
+        // 分期付款支付宝支付
+        Route::get('installments/{installment}/ali_pay', 'InstallmentsController@payByAliPay')->name('installments.ali_pay');
+        // 分期付款支付宝前端回调
+        Route::get('installments/ali_pay/return', 'InstallmentsController@alipayReturn')->name('installments.ali_pay.return');
+        // 分期付款微信支付
+        Route::get('installments/{installment}/wechat_pay', 'InstallmentsController@payByWeChat')->name('installments.wechat_pay');
     });
 });
 
@@ -96,8 +102,12 @@ Route::get('products', 'ProductsController@index')->name('products.index');
 // 商品-详情
 Route::get('products/{product}', 'ProductsController@show')->name('products.show');
 // 订单支付-支付宝支付服务器回调
-Route::post('payment/ali_pay/notify', 'PaymentController@alipayNotify')->name('payment.ali_pay.notify');
+Route::post('payment/ali_pay/notify', 'PaymentController@aliPayNotify')->name('payment.ali_pay.notify');
 // 订单支付-微信支付服务器回调
 Route::post('payment/wechat_pay/notify', 'PaymentController@weChatNotify')->name('payment.wechat_pay.notify');
 // 订单支付-微信退款
 Route::post('payment/wechat_pay/refund_notify', 'PaymentController@weChatRefundNotify')->name('payment.wechat_pay.refund_notify');
+// 分期付款-支付宝支付服务器后端回调不能放在 auth 中间件中
+Route::post('installments/ali_pay/notify', 'InstallmentsController@aliPayNotify')->name('installments.ali_pay.notify');
+// 分期付款-微信支付服务器回调
+Route::post('installments/wechat_pay/notify', 'InstallmentsController@weChatNotify')->name('installments.wechat_pay.notify');

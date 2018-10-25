@@ -12,9 +12,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Installment extends Model
 {
-    const STATUS_PENDING = '';
-    const STATUS_REPAYING = '';
-    const STATUS_FINISHED = '';
+    const STATUS_PENDING = 'pending';
+    const STATUS_REPAYING = 'repaying';
+    const STATUS_FINISHED = 'finished';
 
     public static $statusMap = [
         self::STATUS_PENDING => '未执行',
