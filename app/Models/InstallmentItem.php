@@ -77,4 +77,25 @@ class InstallmentItem extends Model
     {
         return Carbon::now()->gt($this->due_date);
     }
+
+    /**
+     * 刷新退款状态
+     */
+    public function refreshRefundStatus()
+    {
+        $all_success = true;
+        // 重新加载 items,保证与数据库中数据同步
+        $this->load(['items']);
+        foreach ($this->items as $item) {
+            if ($item->paid_at && $item->refund_status !== InstallmentItem::REFUND_STATUS_SUCCESS) {
+                $all_success = false;
+                break;
+            }
+        }
+        if ($all_success) {
+            $this->order->update([
+                'refund_status' => Order::REFUND_STATUS_SUCCESS,
+            ]);
+        }
+    }
 }

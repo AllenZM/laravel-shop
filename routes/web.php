@@ -111,3 +111,5 @@ Route::post('payment/wechat_pay/refund_notify', 'PaymentController@weChatRefundN
 Route::post('installments/ali_pay/notify', 'InstallmentsController@aliPayNotify')->name('installments.ali_pay.notify');
 // 分期付款-微信支付服务器回调
 Route::post('installments/wechat_pay/notify', 'InstallmentsController@weChatNotify')->name('installments.wechat_pay.notify');
+// 分期付款-微信退款
+Route::post('installments/wechat_pay/refund_notify', 'InstallmentsController@wechatRefundNotify')->name('installments.wechat_pay.refund_notify');
