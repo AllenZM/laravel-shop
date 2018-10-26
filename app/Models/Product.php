@@ -61,6 +61,16 @@ class Product extends Model
     }
 
     /**
+     * 获取商品属性
+     *
+     * @return Product|\Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function properties()
+    {
+        return $this->hasMany(ProductProperty::class, 'product_id', 'id');
+    }
+
+    /**
      * 获取众筹
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -82,6 +92,22 @@ class Product extends Model
             return $this->attributes['image'];
         }
         return \Storage::disk('public')->url($this->attributes['image']);
+    }
+
+    /**
+     * 优化商品属性
+     *
+     * @return mixed
+     */
+    public function getGroupedPropertiesAttribute()
+    {
+        return $this->properties
+            // 按照属性名聚合，返回的集合的 key 是属性名，value 是包含属性名的所有属性集合
+            ->groupBy('name')
+            ->map(function ($properties) {
+                // 使用 map 方法将属性集合变为属性值集合
+                return $properties->pluck('value')->all();
+            });
     }
 
 }
