@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-10">
             <div class="card">
-                <div class="card-header"><h4>分期付款详情</h4></div>
+                <div class="card-header">分期付款详情</div>
                 <div class="card-body">
                     <div class="installment-top">
                         <div class="installment-info">
