@@ -14,7 +14,7 @@ class ProductsAddLongTitle extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->string('long_title')->after('title');
+            $table->string('long_title')->after('title')->comment('商品上标题');
         });
     }
 
