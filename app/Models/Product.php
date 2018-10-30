@@ -141,4 +141,16 @@ class Product extends Model
         return $arr;
     }
 
+    /**
+     * 根据 ids 获取商品
+     *
+     * @param $query
+     * @param $ids
+     * @return mixed
+     */
+    public function scopeByIds($query, $ids)
+    {
+        return $query->whereIn('id', $ids)->orderByRaw(sprintf("FIND_IN_SET(id, '%s')", join(',', $ids)));
+    }
+
 }
