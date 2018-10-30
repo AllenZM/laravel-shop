@@ -42,7 +42,7 @@
                                     <input type="hidden" name="category_id" value="{{ $category->id }}">
                                 @endif
                                 <!-- 遍历当前属性筛选条件 -->
-                                @foreach($propertyFilters as $name => $value)
+                                @foreach($property_filters as $name => $value)
                                     <span class="filter">{{ $name }}:
                                     <span class="filter-value">{{ $value }}</span>
                                     <!-- 调用之后定义的 removeFilterFromQuery -->
