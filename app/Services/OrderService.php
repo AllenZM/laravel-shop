@@ -231,23 +231,22 @@ class OrderService
      * 秒杀订单
      *
      * @param User $user
-     * @param UserAddress $address
+     * @param $address_date
      * @param ProductSku $sku
      * @return mixed
      */
-    public function seckill(User $user, UserAddress $address, ProductSku $sku)
+    public function seckill(User $user, array $address_date, ProductSku $sku)
     {
-        $order = \DB::transaction(function () use ($user, $address, $sku) {
-            // 更新此地址的最后使用时间
-            $address->update(['last_used_at' => Carbon::now()]);
+        $order = \DB::transaction(function () use ($user, $address_date, $sku) {
+
             // 创建一个订单
             $order = new Order([
                 'address' => [
-                    // 将地址信息放入订单中
-                    'address' => $address->full_address,
-                    'zip' => $address->zip,
-                    'contact_name' => $address->contact_name,
-                    'contact_phone' => $address->contact_phone,
+                    // address 字段直接从 $address_date 数组中读取
+                    'address' => $address_date['province'] . $address_date['city'] . $address_date['district'] . $address_date['address'],
+                    'zip' => $address_date['zip'],
+                    'contact_name' => $address_date['contact_name'],
+                    'contact_phone' => $address_date['contact_phone'],
                 ],
                 'remark' => '',
                 'total_amount' => $sku->price,
