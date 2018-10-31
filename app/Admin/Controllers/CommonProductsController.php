@@ -15,7 +15,11 @@ abstract class CommonProductsController extends Controller
 {
     use HasResourceActions;
 
-    // 定义一个抽象方法，返回当前管理的商品类型
+    /**
+     * 定义一个抽象方法，返回当前管理的商品类型
+     *
+     * @return mixed
+     */
     abstract public function getProductType();
 
     /**

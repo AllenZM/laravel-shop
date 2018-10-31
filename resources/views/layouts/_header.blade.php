@@ -36,7 +36,7 @@
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
-                                <img src="https://fsdhubcdn.phphub.org/uploads/images/201709/20/1/PtDKbASVcz.png?imageView2/1/w/60/h/60" class="img-responsive img-circle" style="border-radius:50%; width: 30px; height: 30px">
+                                <img src="http://avatar-03933.oss-cn-shanghai.aliyuncs.com/avatar001.png?imageView2/1/w/60/h/60" class="img-responsive img-circle" style="border-radius:50%; width: 30px; height: 30px">
                             </span>
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>

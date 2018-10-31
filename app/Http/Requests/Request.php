@@ -1,4 +1,10 @@
 <?php
+/**
+ * Name: 表单验证.
+ * User: 董坤鸿
+ * Date: 2018/10/30
+ * Time: 下午1:19
+ */
 
 namespace App\Http\Requests;
 

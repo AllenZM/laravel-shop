@@ -81,4 +81,16 @@ Route::group([
     $router->get('crowdfunding_products/{id}/edit', 'CrowdfundingProductsController@edit');
     // 修改众筹
     $router->put('crowdfunding_products/{id}', 'CrowdfundingProductsController@update');
+
+    // 产品管理/秒杀商品
+    // 秒杀列表
+    $router->get('seckill_products', 'SeckillProductsController@index');
+    // 创建秒杀
+    $router->get('seckill_products/create', 'SeckillProductsController@create');
+    // 插入秒杀
+    $router->post('seckill_products', 'SeckillProductsController@store');
+    // 编辑秒杀
+    $router->get('seckill_products/{id}/edit', 'SeckillProductsController@edit');
+    // 修改秒杀
+    $router->put('seckill_products/{id}', 'SeckillProductsController@update');
 });
