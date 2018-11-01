@@ -12,6 +12,8 @@
 */
 
 // 首页
+// 秒杀订单
+Route::post('seckill_orders', 'OrdersController@seckill')->name('seckill_orders.store');
 //Route::get('/', 'PagesController@root')->name('root');
 Route::redirect('/', '/products')->name('root');
 
@@ -83,9 +85,6 @@ Route::group(['middleware' => 'auth'], function() {
 
         // 众筹订单
         Route::post('crowdfunding_orders', 'OrdersController@crowdfunding')->name('crowdfunding_orders.store');
-
-        // 秒杀订单
-        Route::post('seckill_orders', 'OrdersController@seckill')->name('seckill_orders.store');
 
         // 分期付款列表
         Route::get('installments', 'InstallmentsController@index')->name('installments.index');

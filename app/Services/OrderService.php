@@ -80,7 +80,7 @@ class OrderService
                     throw new InvalidRequestException('该商品库存不足');
                 }
             }
-            if ($coupon){
+            if ($coupon) {
                 // 总金额已经计算出来， 检查是否符合优惠券规则
                 $coupon->checkAvailable($user, $totalAmount);
                 // 把订单金额修改为优惠会的金额
@@ -88,7 +88,7 @@ class OrderService
                 // 将订单与优惠券关联
                 $order->couponCode()->associate($coupon);
                 // 增加优惠券的用量，需要判断返回值
-                if ($coupon->changeUsed() <= 0){
+                if ($coupon->changeUsed() <= 0) {
                     throw new CouponCodeUnavailableException('该优惠券已被兑完');
                 }
             }
@@ -116,7 +116,7 @@ class OrderService
     public function crowdfunding(User $user, UserAddress $address, ProductSku $sku, $amount)
     {
         // 开启事物
-        $order = DB::transaction(function () use ($amount, $sku, $user, $address){
+        $order = DB::transaction(function () use ($amount, $sku, $user, $address) {
             // 更新地址最后使用时间
             $address->update(['last_used_at' => Carbon::now()]);
 
@@ -150,7 +150,7 @@ class OrderService
             $item->save();
 
             // 扣减对应 SKU 库存
-            if ($sku->decreaseStock($amount) <= 0){
+            if ($sku->decreaseStock($amount) <= 0) {
                 throw new InvalidRequestException('该商品库存不足');
             }
 
@@ -268,6 +268,7 @@ class OrderService
             if ($sku->decreaseStock(1) <= 0) {
                 throw new InvalidRequestException('该商品库存不足');
             }
+            \Redis::decr('seckill_sku_' . $sku->id);
 
             return $order;
         });
