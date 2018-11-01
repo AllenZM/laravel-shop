@@ -18,7 +18,7 @@ class Migrate extends Command
      *
      * @var string
      */
-    protected $description = '=Elasticsearch 索引结构迁移';
+    protected $description = 'Elasticsearch 索引结构迁移';
 
     protected $es;
 

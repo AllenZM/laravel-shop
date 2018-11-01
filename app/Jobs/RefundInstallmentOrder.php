@@ -1,4 +1,10 @@
 <?php
+/**
+ * Name: 退款分期付款队列.
+ * User: 董坤鸿
+ * Date: 2018/10/24
+ * Time: 下午3:9
+ */
 
 namespace App\Jobs;
 

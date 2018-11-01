@@ -1,4 +1,11 @@
 <?php
+/**
+ * Name: 将同一产品同步到ES队列.
+ * User: 董坤鸿
+ * Date: 2018/10/27
+ * Time: 下午3:9
+ */
+
 
 namespace App\Jobs;
 
