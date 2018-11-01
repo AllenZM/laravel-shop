@@ -11,7 +11,7 @@
  Target Server Version : 50723
  File Encoding         : 65001
 
- Date: 26/10/2018 16:18:01
+ Date: 01/11/2018 11:46:56
 */
 
 SET NAMES utf8mb4;
@@ -31,26 +31,27 @@ CREATE TABLE `lnmp_admin_menu` (
   `created_at` timestamp NULL DEFAULT NULL COMMENT '创建时间',
   `updated_at` timestamp NULL DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='后台菜单表';
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='后台菜单表';
 
 -- ----------------------------
 -- Records of lnmp_admin_menu
 -- ----------------------------
 BEGIN;
 INSERT INTO `lnmp_admin_menu` VALUES (1, 0, 1, '首页', 'fa-bar-chart', '/', NULL, '2018-06-27 21:45:17');
-INSERT INTO `lnmp_admin_menu` VALUES (2, 0, 9, '系统管理', 'fa-tasks', NULL, NULL, '2018-10-22 15:28:16');
-INSERT INTO `lnmp_admin_menu` VALUES (3, 2, 10, '管理员管理', 'fa-users', 'auth/users', NULL, '2018-10-22 15:28:16');
-INSERT INTO `lnmp_admin_menu` VALUES (4, 2, 11, '角色管理', 'fa-user', 'auth/roles', NULL, '2018-10-22 15:28:16');
-INSERT INTO `lnmp_admin_menu` VALUES (5, 2, 12, '权限管理', 'fa-ban', 'auth/permissions', NULL, '2018-10-22 15:28:16');
-INSERT INTO `lnmp_admin_menu` VALUES (6, 2, 13, '菜单管理', 'fa-bars', 'auth/menu', NULL, '2018-10-22 15:28:16');
-INSERT INTO `lnmp_admin_menu` VALUES (7, 2, 14, '操作日志', 'fa-history', 'auth/logs', NULL, '2018-10-22 15:28:16');
+INSERT INTO `lnmp_admin_menu` VALUES (2, 0, 10, '系统管理', 'fa-tasks', NULL, NULL, '2018-10-31 13:09:11');
+INSERT INTO `lnmp_admin_menu` VALUES (3, 2, 11, '管理员管理', 'fa-users', 'auth/users', NULL, '2018-10-31 13:09:11');
+INSERT INTO `lnmp_admin_menu` VALUES (4, 2, 12, '角色管理', 'fa-user', 'auth/roles', NULL, '2018-10-31 13:09:11');
+INSERT INTO `lnmp_admin_menu` VALUES (5, 2, 13, '权限管理', 'fa-ban', 'auth/permissions', NULL, '2018-10-31 13:09:11');
+INSERT INTO `lnmp_admin_menu` VALUES (6, 2, 14, '菜单管理', 'fa-bars', 'auth/menu', NULL, '2018-10-31 13:09:11');
+INSERT INTO `lnmp_admin_menu` VALUES (7, 2, 15, '操作日志', 'fa-history', 'auth/logs', NULL, '2018-10-31 13:09:11');
 INSERT INTO `lnmp_admin_menu` VALUES (8, 0, 2, '用户管理', 'fa-users', '/users', '2018-06-27 21:44:06', '2018-06-27 21:45:17');
 INSERT INTO `lnmp_admin_menu` VALUES (9, 0, 3, '产品管理', 'fa-cubes', NULL, '2018-06-27 23:38:52', '2018-06-27 23:39:53');
 INSERT INTO `lnmp_admin_menu` VALUES (10, 9, 5, '商品管理', 'fa-cube', '/products', '2018-06-27 23:40:36', '2018-10-21 22:22:27');
-INSERT INTO `lnmp_admin_menu` VALUES (11, 9, 7, '订单管理', 'fa-rmb', '/orders', '2018-06-29 12:39:25', '2018-10-22 15:28:16');
-INSERT INTO `lnmp_admin_menu` VALUES (12, 9, 8, '优惠券管理', 'fa-tags', '/coupon_codes', '2018-07-05 01:08:59', '2018-10-22 15:28:16');
+INSERT INTO `lnmp_admin_menu` VALUES (11, 9, 8, '订单管理', 'fa-rmb', '/orders', '2018-06-29 12:39:25', '2018-10-31 13:09:11');
+INSERT INTO `lnmp_admin_menu` VALUES (12, 9, 9, '优惠券管理', 'fa-tags', '/coupon_codes', '2018-07-05 01:08:59', '2018-10-31 13:09:11');
 INSERT INTO `lnmp_admin_menu` VALUES (13, 9, 4, '商品类目', 'fa-align-justify', '/categories', '2018-10-21 22:18:34', '2018-10-21 22:22:27');
 INSERT INTO `lnmp_admin_menu` VALUES (14, 9, 6, '众筹商品', 'fa-flag-checkered', '/crowdfunding_products', '2018-10-22 15:28:00', '2018-10-22 15:28:16');
+INSERT INTO `lnmp_admin_menu` VALUES (15, 9, 7, '秒杀商品', 'fa-bolt', '/seckill_products', '2018-10-31 13:08:50', '2018-10-31 13:09:11');
 COMMIT;
 
 -- ----------------------------
@@ -68,7 +69,7 @@ CREATE TABLE `lnmp_admin_operation_log` (
   `updated_at` timestamp NULL DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`),
   KEY `admin_operation_log_user_id_index` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=780 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='后台操作日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=826 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='后台操作日志表';
 
 -- ----------------------------
 -- Records of lnmp_admin_operation_log
@@ -853,6 +854,52 @@ INSERT INTO `lnmp_admin_operation_log` VALUES (776, 1, 'admin/products/1/edit', 
 INSERT INTO `lnmp_admin_operation_log` VALUES (777, 1, 'admin/products/1', 'PUT', '192.168.10.1', '{\"type\":\"normal\",\"title\":\"Apple iPhone X\",\"long_title\":\"2018\\u6700\\u65b0\\u6b3e iPhone X 256G \\u82f9\\u679c\\u624b\\u673a\",\"category_id\":\"25\",\"description\":\"<p>\\u200b\\u200b\\u200b\\u200b<a href=\\\"https:\\/\\/sale.jd.com\\/act\\/XpbwM0G1ZaW.html\\\" target=\\\"_blank\\\"><img alt=\\\"\\\" src=\\\"https:\\/\\/img30.360buyimg.com\\/jgsq-productsoa\\/jfs\\/t24250\\/4\\/221454018\\/20495\\/68e604c7\\/5b29b6d2Ne6da1187.jpg\\\" \\/><\\/a><\\/p>\\r\\n\\r\\n<p><img alt=\\\"\\\" src=\\\"https:\\/\\/img30.360buyimg.com\\/cms\\/jfs\\/t20224\\/64\\/1456783694\\/118133\\/e7b04d48\\/5b2a122fN098e03ad.jpg\\\" style=\\\"height:223px; width:750px\\\" \\/><\\/p>\\r\\n\\r\\n<table align=\\\"center\\\" border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"height:1272px; width:750px\\\">\\r\\n\\t<tbody>\\r\\n\\t\\t<tr>\\r\\n\\t\\t\\t<td><img alt=\\\"\\\" src=\\\"https:\\/\\/img10.360buyimg.com\\/imgzone\\/jfs\\/t16873\\/173\\/2429368143\\/84521\\/f722c057\\/5af564e5N4c0d564f.jpg\\\" style=\\\"height:249px; width:750px\\\" \\/><\\/td>\\r\\n\\t\\t<\\/tr>\\r\\n\\t\\t<tr>\\r\\n\\t\\t\\t<td><img alt=\\\"\\\" src=\\\"https:\\/\\/img10.360buyimg.com\\/imgzone\\/jfs\\/t18493\\/37\\/635247604\\/42841\\/b751e11f\\/5a9cfa70Nd0637367.jpg\\\" style=\\\"height:341px; width:750px\\\" \\/><\\/td>\\r\\n\\t\\t<\\/tr>\\r\\n\\t\\t<tr>\\r\\n\\t\\t\\t<td><img alt=\\\"\\\" src=\\\"https:\\/\\/img10.360buyimg.com\\/imgzone\\/jfs\\/t17668\\/348\\/2483879516\\/82843\\/ff7ca37c\\/5af78e10N103afbd7.jpg\\\" style=\\\"height:405px; width:750px\\\" \\/><\\/td>\\r\\n\\t\\t<\\/tr>\\r\\n\\t\\t<tr>\\r\\n\\t\\t\\t<td><img alt=\\\"\\\" src=\\\"https:\\/\\/img10.360buyimg.com\\/imgzone\\/jfs\\/t15079\\/323\\/2344529912\\/61849\\/ce9798d9\\/5a9cfa70N43f7357c.jpg\\\" style=\\\"height:277px; width:750px\\\" \\/><\\/td>\\r\\n\\t\\t<\\/tr>\\r\\n\\t<\\/tbody>\\r\\n<\\/table>\\r\\n\\r\\n<p>&nbsp;<\\/p>\\r\\n\\r\\n<p><img alt=\\\"\\\" src=\\\"https:\\/\\/img30.360buyimg.com\\/jgsq-productsoa\\/jfs\\/t9724\\/59\\/1430591780\\/2138721\\/c72f6394\\/59e0726aN1edf23c4.jpg\\\" \\/><\\/p>\",\"on_sale\":\"1\",\"skus\":{\"1\":{\"title\":\"\\u94f6\\u8272\",\"description\":\"Apple iPhone X \\u94f6\\u8272\",\"price\":\"7599.00\",\"stock\":\"198\",\"id\":\"1\",\"_remove_\":\"0\"},\"2\":{\"title\":\"\\u6df1\\u7a7a\\u7070\\u8272\",\"description\":\"Apple iPhone X \\u6df1\\u7a7a\\u7070\\u8272\",\"price\":\"7699.00\",\"stock\":\"220\",\"id\":\"2\",\"_remove_\":\"0\"}},\"properties\":{\"1\":{\"name\":\"\\u54c1\\u724c\\u540d\\u79f0\",\"value\":\"\\u82f9\\u679c\\/Apple\",\"id\":\"1\",\"_remove_\":\"0\"},\"2\":{\"name\":\"\\u673a\\u8eab\\u989c\\u8272\",\"value\":\"\\u94f6\\u8272\",\"id\":\"2\",\"_remove_\":\"0\"},\"3\":{\"name\":\"\\u673a\\u8eab\\u989c\\u8272\",\"value\":\"\\u7070\\u8272\",\"id\":\"3\",\"_remove_\":\"0\"},\"4\":{\"name\":\"\\u5b58\\u50a8\\u5bb9\\u91cf\",\"value\":\"256G\",\"id\":\"4\",\"_remove_\":\"0\"}},\"_token\":\"ADqxz1HaaBlTruhNSLDDiwVvMcTEDeu2Rx5nD2tr\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/shop.buqiu.test\\/admin\\/products?&page=4\"}', '2018-10-26 15:03:58', '2018-10-26 15:03:58');
 INSERT INTO `lnmp_admin_operation_log` VALUES (778, 1, 'admin/products', 'GET', '192.168.10.1', '{\"page\":\"4\"}', '2018-10-26 15:03:59', '2018-10-26 15:03:59');
 INSERT INTO `lnmp_admin_operation_log` VALUES (779, 1, 'admin/products', 'GET', '192.168.10.1', '{\"_pjax\":\"#pjax-container\"}', '2018-10-26 15:30:52', '2018-10-26 15:30:52');
+INSERT INTO `lnmp_admin_operation_log` VALUES (780, 1, 'admin/products/70/edit', 'GET', '192.168.10.1', '{\"_pjax\":\"#pjax-container\"}', '2018-10-26 17:24:25', '2018-10-26 17:24:25');
+INSERT INTO `lnmp_admin_operation_log` VALUES (781, 1, 'admin/products', 'GET', '192.168.10.1', '{\"_pjax\":\"#pjax-container\"}', '2018-10-26 17:42:59', '2018-10-26 17:42:59');
+INSERT INTO `lnmp_admin_operation_log` VALUES (782, 1, 'admin/products', 'GET', '192.168.10.1', '{\"_pjax\":\"#pjax-container\",\"page\":\"4\"}', '2018-10-26 17:43:04', '2018-10-26 17:43:04');
+INSERT INTO `lnmp_admin_operation_log` VALUES (783, 1, 'admin/products/1/edit', 'GET', '192.168.10.1', '{\"_pjax\":\"#pjax-container\"}', '2018-10-26 17:43:08', '2018-10-26 17:43:08');
+INSERT INTO `lnmp_admin_operation_log` VALUES (784, 1, 'admin/products/1', 'PUT', '192.168.10.1', '{\"type\":\"normal\",\"title\":\"Apple iPhone X\",\"long_title\":\"2018\\u6700\\u65b0\\u6b3e iPhone X 256G \\u82f9\\u679c\\u624b\\u673a\",\"category_id\":\"25\",\"description\":\"<p>\\u200b\\u200b\\u200b\\u200b<a href=\\\"https:\\/\\/sale.jd.com\\/act\\/XpbwM0G1ZaW.html\\\" target=\\\"_blank\\\"><img alt=\\\"\\\" src=\\\"https:\\/\\/img30.360buyimg.com\\/jgsq-productsoa\\/jfs\\/t24250\\/4\\/221454018\\/20495\\/68e604c7\\/5b29b6d2Ne6da1187.jpg\\\" \\/><\\/a><\\/p>\\r\\n\\r\\n<p><img alt=\\\"\\\" src=\\\"https:\\/\\/img30.360buyimg.com\\/cms\\/jfs\\/t20224\\/64\\/1456783694\\/118133\\/e7b04d48\\/5b2a122fN098e03ad.jpg\\\" style=\\\"height:223px; width:750px\\\" \\/><\\/p>\\r\\n\\r\\n<table align=\\\"center\\\" border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"height:1272px; width:750px\\\">\\r\\n\\t<tbody>\\r\\n\\t\\t<tr>\\r\\n\\t\\t\\t<td><img alt=\\\"\\\" src=\\\"https:\\/\\/img10.360buyimg.com\\/imgzone\\/jfs\\/t16873\\/173\\/2429368143\\/84521\\/f722c057\\/5af564e5N4c0d564f.jpg\\\" style=\\\"height:249px; width:750px\\\" \\/><\\/td>\\r\\n\\t\\t<\\/tr>\\r\\n\\t\\t<tr>\\r\\n\\t\\t\\t<td><img alt=\\\"\\\" src=\\\"https:\\/\\/img10.360buyimg.com\\/imgzone\\/jfs\\/t18493\\/37\\/635247604\\/42841\\/b751e11f\\/5a9cfa70Nd0637367.jpg\\\" style=\\\"height:341px; width:750px\\\" \\/><\\/td>\\r\\n\\t\\t<\\/tr>\\r\\n\\t\\t<tr>\\r\\n\\t\\t\\t<td><img alt=\\\"\\\" src=\\\"https:\\/\\/img10.360buyimg.com\\/imgzone\\/jfs\\/t17668\\/348\\/2483879516\\/82843\\/ff7ca37c\\/5af78e10N103afbd7.jpg\\\" style=\\\"height:405px; width:750px\\\" \\/><\\/td>\\r\\n\\t\\t<\\/tr>\\r\\n\\t\\t<tr>\\r\\n\\t\\t\\t<td><img alt=\\\"\\\" src=\\\"https:\\/\\/img10.360buyimg.com\\/imgzone\\/jfs\\/t15079\\/323\\/2344529912\\/61849\\/ce9798d9\\/5a9cfa70N43f7357c.jpg\\\" style=\\\"height:277px; width:750px\\\" \\/><\\/td>\\r\\n\\t\\t<\\/tr>\\r\\n\\t<\\/tbody>\\r\\n<\\/table>\\r\\n\\r\\n<p>&nbsp;<\\/p>\\r\\n\\r\\n<p><img alt=\\\"\\\" src=\\\"https:\\/\\/img30.360buyimg.com\\/jgsq-productsoa\\/jfs\\/t9724\\/59\\/1430591780\\/2138721\\/c72f6394\\/59e0726aN1edf23c4.jpg\\\" \\/><\\/p>\",\"on_sale\":\"1\",\"skus\":{\"1\":{\"title\":\"\\u94f6\\u8272\",\"description\":\"Apple iPhone X \\u94f6\\u8272\",\"price\":\"7599.00\",\"stock\":\"198\",\"id\":\"1\",\"_remove_\":\"0\"},\"2\":{\"title\":\"\\u6df1\\u7a7a\\u7070\\u8272\",\"description\":\"Apple iPhone X \\u6df1\\u7a7a\\u7070\\u8272\",\"price\":\"7699.00\",\"stock\":\"220\",\"id\":\"2\",\"_remove_\":\"0\"}},\"properties\":{\"1\":{\"name\":\"\\u54c1\\u724c\\u540d\\u79f0\",\"value\":\"\\u82f9\\u679c\\/Apple\",\"id\":\"1\",\"_remove_\":\"0\"},\"2\":{\"name\":\"\\u673a\\u8eab\\u989c\\u8272\",\"value\":\"\\u94f6\\u8272\",\"id\":\"2\",\"_remove_\":\"0\"},\"3\":{\"name\":\"\\u673a\\u8eab\\u989c\\u8272\",\"value\":\"\\u7070\\u8272\",\"id\":\"3\",\"_remove_\":\"0\"},\"4\":{\"name\":\"\\u5b58\\u50a8\\u5bb9\\u91cf\",\"value\":\"256G\",\"id\":\"4\",\"_remove_\":\"0\"}},\"_token\":\"ADqxz1HaaBlTruhNSLDDiwVvMcTEDeu2Rx5nD2tr\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/shop.buqiu.test\\/admin\\/products?&page=4\"}', '2018-10-26 17:43:15', '2018-10-26 17:43:15');
+INSERT INTO `lnmp_admin_operation_log` VALUES (785, 1, 'admin/products', 'GET', '192.168.10.1', '{\"page\":\"4\"}', '2018-10-26 17:43:15', '2018-10-26 17:43:15');
+INSERT INTO `lnmp_admin_operation_log` VALUES (786, 1, 'admin/products/1/edit', 'GET', '192.168.10.1', '{\"_pjax\":\"#pjax-container\"}', '2018-10-26 17:44:44', '2018-10-26 17:44:44');
+INSERT INTO `lnmp_admin_operation_log` VALUES (787, 1, 'admin/products/1', 'PUT', '192.168.10.1', '{\"type\":\"normal\",\"title\":\"Apple iPhone X 256G\",\"long_title\":\"2018\\u6700\\u65b0\\u6b3e iPhone X 256G \\u82f9\\u679c\\u624b\\u673a\",\"category_id\":\"25\",\"description\":\"<p>\\u200b\\u200b\\u200b\\u200b<a href=\\\"https:\\/\\/sale.jd.com\\/act\\/XpbwM0G1ZaW.html\\\" target=\\\"_blank\\\"><img alt=\\\"\\\" src=\\\"https:\\/\\/img30.360buyimg.com\\/jgsq-productsoa\\/jfs\\/t24250\\/4\\/221454018\\/20495\\/68e604c7\\/5b29b6d2Ne6da1187.jpg\\\" \\/><\\/a><\\/p>\\r\\n\\r\\n<p><img alt=\\\"\\\" src=\\\"https:\\/\\/img30.360buyimg.com\\/cms\\/jfs\\/t20224\\/64\\/1456783694\\/118133\\/e7b04d48\\/5b2a122fN098e03ad.jpg\\\" style=\\\"height:223px; width:750px\\\" \\/><\\/p>\\r\\n\\r\\n<table align=\\\"center\\\" border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"height:1272px; width:750px\\\">\\r\\n\\t<tbody>\\r\\n\\t\\t<tr>\\r\\n\\t\\t\\t<td><img alt=\\\"\\\" src=\\\"https:\\/\\/img10.360buyimg.com\\/imgzone\\/jfs\\/t16873\\/173\\/2429368143\\/84521\\/f722c057\\/5af564e5N4c0d564f.jpg\\\" style=\\\"height:249px; width:750px\\\" \\/><\\/td>\\r\\n\\t\\t<\\/tr>\\r\\n\\t\\t<tr>\\r\\n\\t\\t\\t<td><img alt=\\\"\\\" src=\\\"https:\\/\\/img10.360buyimg.com\\/imgzone\\/jfs\\/t18493\\/37\\/635247604\\/42841\\/b751e11f\\/5a9cfa70Nd0637367.jpg\\\" style=\\\"height:341px; width:750px\\\" \\/><\\/td>\\r\\n\\t\\t<\\/tr>\\r\\n\\t\\t<tr>\\r\\n\\t\\t\\t<td><img alt=\\\"\\\" src=\\\"https:\\/\\/img10.360buyimg.com\\/imgzone\\/jfs\\/t17668\\/348\\/2483879516\\/82843\\/ff7ca37c\\/5af78e10N103afbd7.jpg\\\" style=\\\"height:405px; width:750px\\\" \\/><\\/td>\\r\\n\\t\\t<\\/tr>\\r\\n\\t\\t<tr>\\r\\n\\t\\t\\t<td><img alt=\\\"\\\" src=\\\"https:\\/\\/img10.360buyimg.com\\/imgzone\\/jfs\\/t15079\\/323\\/2344529912\\/61849\\/ce9798d9\\/5a9cfa70N43f7357c.jpg\\\" style=\\\"height:277px; width:750px\\\" \\/><\\/td>\\r\\n\\t\\t<\\/tr>\\r\\n\\t<\\/tbody>\\r\\n<\\/table>\\r\\n\\r\\n<p>&nbsp;<\\/p>\\r\\n\\r\\n<p><img alt=\\\"\\\" src=\\\"https:\\/\\/img30.360buyimg.com\\/jgsq-productsoa\\/jfs\\/t9724\\/59\\/1430591780\\/2138721\\/c72f6394\\/59e0726aN1edf23c4.jpg\\\" \\/><\\/p>\",\"on_sale\":\"1\",\"skus\":{\"1\":{\"title\":\"\\u94f6\\u8272\",\"description\":\"Apple iPhone X \\u94f6\\u8272\",\"price\":\"7599.00\",\"stock\":\"198\",\"id\":\"1\",\"_remove_\":\"0\"},\"2\":{\"title\":\"\\u6df1\\u7a7a\\u7070\\u8272\",\"description\":\"Apple iPhone X \\u6df1\\u7a7a\\u7070\\u8272\",\"price\":\"7699.00\",\"stock\":\"220\",\"id\":\"2\",\"_remove_\":\"0\"}},\"properties\":{\"1\":{\"name\":\"\\u54c1\\u724c\\u540d\\u79f0\",\"value\":\"\\u82f9\\u679c\\/Apple\",\"id\":\"1\",\"_remove_\":\"0\"},\"2\":{\"name\":\"\\u673a\\u8eab\\u989c\\u8272\",\"value\":\"\\u94f6\\u8272\",\"id\":\"2\",\"_remove_\":\"0\"},\"3\":{\"name\":\"\\u673a\\u8eab\\u989c\\u8272\",\"value\":\"\\u7070\\u8272\",\"id\":\"3\",\"_remove_\":\"0\"},\"4\":{\"name\":\"\\u5b58\\u50a8\\u5bb9\\u91cf\",\"value\":\"256G\",\"id\":\"4\",\"_remove_\":\"0\"}},\"_token\":\"ADqxz1HaaBlTruhNSLDDiwVvMcTEDeu2Rx5nD2tr\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/shop.buqiu.test\\/admin\\/products?&page=4\"}', '2018-10-26 17:44:52', '2018-10-26 17:44:52');
+INSERT INTO `lnmp_admin_operation_log` VALUES (788, 1, 'admin/products', 'GET', '192.168.10.1', '{\"page\":\"4\"}', '2018-10-26 17:44:53', '2018-10-26 17:44:53');
+INSERT INTO `lnmp_admin_operation_log` VALUES (789, 1, 'admin/products', 'GET', '192.168.10.1', '{\"page\":\"4\"}', '2018-10-26 19:11:25', '2018-10-26 19:11:25');
+INSERT INTO `lnmp_admin_operation_log` VALUES (790, 1, 'admin', 'GET', '192.168.10.1', '[]', '2018-10-31 13:07:45', '2018-10-31 13:07:45');
+INSERT INTO `lnmp_admin_operation_log` VALUES (791, 1, 'admin/auth/menu', 'GET', '192.168.10.1', '{\"_pjax\":\"#pjax-container\"}', '2018-10-31 13:07:55', '2018-10-31 13:07:55');
+INSERT INTO `lnmp_admin_operation_log` VALUES (792, 1, 'admin/auth/menu', 'POST', '192.168.10.1', '{\"parent_id\":\"9\",\"title\":\"\\u79d2\\u6740\\u5546\\u54c1\",\"icon\":\"fa-bolt\",\"uri\":\"\\/seckill_products\",\"roles\":[null],\"_token\":\"1rhFuMaqu4MBzCYEPaOLqhw158M9TSEPP3bwEjxr\"}', '2018-10-31 13:08:50', '2018-10-31 13:08:50');
+INSERT INTO `lnmp_admin_operation_log` VALUES (793, 1, 'admin/auth/menu', 'GET', '192.168.10.1', '[]', '2018-10-31 13:08:50', '2018-10-31 13:08:50');
+INSERT INTO `lnmp_admin_operation_log` VALUES (794, 1, 'admin/auth/menu', 'POST', '192.168.10.1', '{\"_token\":\"1rhFuMaqu4MBzCYEPaOLqhw158M9TSEPP3bwEjxr\",\"_order\":\"[{\\\"id\\\":1},{\\\"id\\\":8},{\\\"id\\\":9,\\\"children\\\":[{\\\"id\\\":13},{\\\"id\\\":10},{\\\"id\\\":14},{\\\"id\\\":15},{\\\"id\\\":11},{\\\"id\\\":12}]},{\\\"id\\\":2,\\\"children\\\":[{\\\"id\\\":3},{\\\"id\\\":4},{\\\"id\\\":5},{\\\"id\\\":6},{\\\"id\\\":7}]}]\"}', '2018-10-31 13:09:11', '2018-10-31 13:09:11');
+INSERT INTO `lnmp_admin_operation_log` VALUES (795, 1, 'admin/auth/menu', 'GET', '192.168.10.1', '{\"_pjax\":\"#pjax-container\"}', '2018-10-31 13:09:12', '2018-10-31 13:09:12');
+INSERT INTO `lnmp_admin_operation_log` VALUES (796, 1, 'admin/auth/menu', 'GET', '192.168.10.1', '{\"_pjax\":\"#pjax-container\"}', '2018-10-31 13:09:15', '2018-10-31 13:09:15');
+INSERT INTO `lnmp_admin_operation_log` VALUES (797, 1, 'admin/auth/menu', 'GET', '192.168.10.1', '[]', '2018-10-31 13:09:19', '2018-10-31 13:09:19');
+INSERT INTO `lnmp_admin_operation_log` VALUES (798, 1, 'admin/seckill_products', 'GET', '192.168.10.1', '{\"_pjax\":\"#pjax-container\"}', '2018-10-31 13:09:27', '2018-10-31 13:09:27');
+INSERT INTO `lnmp_admin_operation_log` VALUES (799, 1, 'admin/seckill_products/create', 'GET', '192.168.10.1', '{\"_pjax\":\"#pjax-container\"}', '2018-10-31 13:09:30', '2018-10-31 13:09:30');
+INSERT INTO `lnmp_admin_operation_log` VALUES (800, 1, 'admin/products', 'GET', '192.168.10.1', '[]', '2018-10-31 13:11:31', '2018-10-31 13:11:31');
+INSERT INTO `lnmp_admin_operation_log` VALUES (801, 1, 'admin/products', 'GET', '192.168.10.1', '{\"id\":\"1\",\"_pjax\":\"#pjax-container\"}', '2018-10-31 13:11:41', '2018-10-31 13:11:41');
+INSERT INTO `lnmp_admin_operation_log` VALUES (802, 1, 'admin/api/categories', 'GET', '192.168.10.1', '{\"is_directory\":\"0\",\"q\":\"\\u624b\\u673a\"}', '2018-10-31 13:12:06', '2018-10-31 13:12:06');
+INSERT INTO `lnmp_admin_operation_log` VALUES (803, 1, 'admin/api/categories', 'GET', '192.168.10.1', '{\"is_directory\":\"0\",\"q\":\"\\u624b\\u673ato\"}', '2018-10-31 13:12:07', '2018-10-31 13:12:07');
+INSERT INTO `lnmp_admin_operation_log` VALUES (804, 1, 'admin/api/categories', 'GET', '192.168.10.1', '{\"is_directory\":\"0\",\"q\":\"\\u624b\\u673aton\"}', '2018-10-31 13:12:08', '2018-10-31 13:12:08');
+INSERT INTO `lnmp_admin_operation_log` VALUES (805, 1, 'admin/api/categories', 'GET', '192.168.10.1', '{\"is_directory\":\"0\",\"q\":\"\\u624b\\u673aton\'x\"}', '2018-10-31 13:12:08', '2018-10-31 13:12:08');
+INSERT INTO `lnmp_admin_operation_log` VALUES (806, 1, 'admin/api/categories', 'GET', '192.168.10.1', '{\"is_directory\":\"0\",\"q\":\"\\u624b\\u673a\\u901a\\u8baf\"}', '2018-10-31 13:12:09', '2018-10-31 13:12:09');
+INSERT INTO `lnmp_admin_operation_log` VALUES (807, 1, 'admin/api/categories', 'GET', '192.168.10.1', '{\"is_directory\":\"0\",\"q\":\"\\u624b\"}', '2018-10-31 13:12:13', '2018-10-31 13:12:13');
+INSERT INTO `lnmp_admin_operation_log` VALUES (808, 1, 'admin/api/categories', 'GET', '192.168.10.1', '{\"is_directory\":\"0\",\"q\":\"z\"}', '2018-10-31 13:12:13', '2018-10-31 13:12:13');
+INSERT INTO `lnmp_admin_operation_log` VALUES (809, 1, 'admin/api/categories', 'GET', '192.168.10.1', '{\"is_directory\":\"0\",\"q\":\"zhi\"}', '2018-10-31 13:12:14', '2018-10-31 13:12:14');
+INSERT INTO `lnmp_admin_operation_log` VALUES (810, 1, 'admin/api/categories', 'GET', '192.168.10.1', '{\"is_directory\":\"0\",\"q\":\"zhi\'neng\'j\"}', '2018-10-31 13:12:15', '2018-10-31 13:12:15');
+INSERT INTO `lnmp_admin_operation_log` VALUES (811, 1, 'admin/api/categories', 'GET', '192.168.10.1', '{\"is_directory\":\"0\",\"q\":\"\\u667a\\u80fd\\u673a\"}', '2018-10-31 13:12:15', '2018-10-31 13:12:15');
+INSERT INTO `lnmp_admin_operation_log` VALUES (812, 1, 'admin/products/1/edit', 'GET', '192.168.10.1', '{\"_pjax\":\"#pjax-container\"}', '2018-10-31 13:12:21', '2018-10-31 13:12:21');
+INSERT INTO `lnmp_admin_operation_log` VALUES (813, 1, 'admin/seckill_products', 'POST', '192.168.10.1', '{\"type\":\"seckill\",\"title\":\"\\u79d2\\u6740 iPhone X 256G\",\"long_title\":\"2018\\u6700\\u65b0\\u6b3e iPhone X 256G \\u82f9\\u679c\\u624b\\u673a\",\"category_id\":\"25\",\"description\":\"<p>\\u79d2\\u6740\\u5546\\u54c1\\u4e00\\u4efd<\\/p>\",\"on_sale\":\"1\",\"seckill\":{\"start_at\":\"2018-10-31 00:00:00\",\"end_at\":\"2018-10-12 00:00:00\"},\"skus\":{\"new_1\":{\"title\":\"iPhone XS  \\u4e00\\u53f0\",\"description\":\"\\u79d2\\u6740 iPhone XS\",\"price\":\"6666\",\"stock\":null,\"id\":null,\"_remove_\":\"0\"}},\"_token\":\"1rhFuMaqu4MBzCYEPaOLqhw158M9TSEPP3bwEjxr\",\"_previous_\":\"http:\\/\\/shop.buqiu.test\\/admin\\/seckill_products\"}', '2018-10-31 13:14:09', '2018-10-31 13:14:09');
+INSERT INTO `lnmp_admin_operation_log` VALUES (814, 1, 'admin/seckill_products/create', 'GET', '192.168.10.1', '[]', '2018-10-31 13:14:10', '2018-10-31 13:14:10');
+INSERT INTO `lnmp_admin_operation_log` VALUES (815, 1, 'admin/api/categories', 'GET', '192.168.10.1', '{\"is_directory\":\"0\",\"q\":\"s\'ho\"}', '2018-10-31 13:14:26', '2018-10-31 13:14:26');
+INSERT INTO `lnmp_admin_operation_log` VALUES (816, 1, 'admin/api/categories', 'GET', '192.168.10.1', '{\"is_directory\":\"0\",\"q\":\"s\"}', '2018-10-31 13:14:26', '2018-10-31 13:14:26');
+INSERT INTO `lnmp_admin_operation_log` VALUES (817, 1, 'admin/api/categories', 'GET', '192.168.10.1', '{\"is_directory\":\"0\",\"q\":\"zhi\'neng\"}', '2018-10-31 13:14:28', '2018-10-31 13:14:28');
+INSERT INTO `lnmp_admin_operation_log` VALUES (818, 1, 'admin/api/categories', 'GET', '192.168.10.1', '{\"is_directory\":\"0\",\"q\":\"zhi\'neng\'j\"}', '2018-10-31 13:14:28', '2018-10-31 13:14:28');
+INSERT INTO `lnmp_admin_operation_log` VALUES (819, 1, 'admin/api/categories', 'GET', '192.168.10.1', '{\"is_directory\":\"0\",\"q\":\"\\u667a\\u80fd\\u673a\"}', '2018-10-31 13:14:28', '2018-10-31 13:14:28');
+INSERT INTO `lnmp_admin_operation_log` VALUES (820, 1, 'admin/seckill_products', 'POST', '192.168.10.1', '{\"type\":\"seckill\",\"title\":\"\\u79d2\\u6740 iPhone X 256G\",\"long_title\":\"2018\\u6700\\u65b0\\u6b3e iPhone X 256G \\u82f9\\u679c\\u624b\\u673a\",\"category_id\":\"25\",\"description\":\"<p>\\u79d2\\u6740\\u5546\\u54c1\\u4e00\\u4efd<\\/p>\",\"on_sale\":\"1\",\"seckill\":{\"start_at\":\"2018-10-31 00:00:00\",\"end_at\":\"2018-10-12 00:00:00\"},\"skus\":{\"new_1\":{\"title\":\"\\u79d2\\u6740 iPhone X 256G\",\"description\":\"<p>\\u79d2\\u6740\\u5546\\u54c1\\u4e00\\u4efd<\\/p>\",\"price\":\"6666\",\"stock\":\"1000\",\"id\":null,\"_remove_\":\"0\"}},\"_token\":\"1rhFuMaqu4MBzCYEPaOLqhw158M9TSEPP3bwEjxr\"}', '2018-10-31 13:14:38', '2018-10-31 13:14:38');
+INSERT INTO `lnmp_admin_operation_log` VALUES (821, 1, 'admin/seckill_products', 'GET', '192.168.10.1', '[]', '2018-10-31 13:14:38', '2018-10-31 13:14:38');
+INSERT INTO `lnmp_admin_operation_log` VALUES (822, 1, 'admin/seckill_products/71/edit', 'GET', '192.168.10.1', '{\"_pjax\":\"#pjax-container\"}', '2018-10-31 13:16:02', '2018-10-31 13:16:02');
+INSERT INTO `lnmp_admin_operation_log` VALUES (823, 1, 'admin/seckill_products/71', 'PUT', '192.168.10.1', '{\"type\":\"seckill\",\"title\":\"\\u79d2\\u6740 iPhone X 256G\",\"long_title\":\"\\u79d2\\u6740 2018\\u6700\\u65b0\\u6b3e iPhone X 256G \\u82f9\\u679c\\u624b\\u673a\",\"category_id\":\"25\",\"description\":\"<p>\\u79d2\\u6740\\u5546\\u54c1\\u4e00\\u4efd<\\/p>\",\"on_sale\":\"1\",\"seckill\":{\"start_at\":\"2018-10-31 00:00:00\",\"end_at\":\"2018-10-12 00:00:00\"},\"skus\":{\"208\":{\"title\":\"\\u79d2\\u6740 iPhone X 256G\",\"description\":\"<p>\\u79d2\\u6740\\u5546\\u54c1\\u4e00\\u4efd<\\/p>\",\"price\":\"6666.00\",\"stock\":\"1000\",\"id\":\"208\",\"_remove_\":\"0\"}},\"_token\":\"1rhFuMaqu4MBzCYEPaOLqhw158M9TSEPP3bwEjxr\",\"_method\":\"PUT\",\"_previous_\":\"http:\\/\\/shop.buqiu.test\\/admin\\/seckill_products\"}', '2018-10-31 13:16:10', '2018-10-31 13:16:10');
+INSERT INTO `lnmp_admin_operation_log` VALUES (824, 1, 'admin/seckill_products', 'GET', '192.168.10.1', '[]', '2018-10-31 13:16:11', '2018-10-31 13:16:11');
+INSERT INTO `lnmp_admin_operation_log` VALUES (825, 1, 'admin/seckill_products/71/edit', 'GET', '192.168.10.1', '{\"_pjax\":\"#pjax-container\"}', '2018-10-31 15:08:28', '2018-10-31 15:08:28');
 COMMIT;
 
 -- ----------------------------
@@ -1134,7 +1181,7 @@ CREATE TABLE `lnmp_crowdfunding_products` (
   PRIMARY KEY (`id`),
   KEY `crowdfunding_products_product_id_foreign` (`product_id`),
   CONSTRAINT `crowdfunding_products_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `lnmp_products` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='众筹表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='众筹产品表';
 
 -- ----------------------------
 -- Records of lnmp_crowdfunding_products
@@ -1167,15 +1214,6 @@ CREATE TABLE `lnmp_installment_items` (
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='还款计划表';
 
 -- ----------------------------
--- Records of lnmp_installment_items
--- ----------------------------
-BEGIN;
-INSERT INTO `lnmp_installment_items` VALUES (13, 5, 0, 164.66, 2.46, NULL, '2018-10-25 00:00:00', '2018-10-24 21:14:25', 'alipay', NULL, 'finished', '2018-10-24 17:53:15', '2018-10-24 17:53:15');
-INSERT INTO `lnmp_installment_items` VALUES (14, 5, 1, 164.66, 2.46, NULL, '2018-11-24 00:00:00', NULL, NULL, NULL, 'pending', '2018-10-24 17:53:15', '2018-10-24 17:53:15');
-INSERT INTO `lnmp_installment_items` VALUES (15, 5, 2, 164.68, 2.46, NULL, '2018-12-24 00:00:00', NULL, NULL, NULL, 'pending', '2018-10-24 17:53:15', '2018-10-24 17:53:15');
-COMMIT;
-
--- ----------------------------
 -- Table structure for lnmp_installments
 -- ----------------------------
 DROP TABLE IF EXISTS `lnmp_installments`;
@@ -1199,13 +1237,6 @@ CREATE TABLE `lnmp_installments` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='分期信息表';
 
 -- ----------------------------
--- Records of lnmp_installments
--- ----------------------------
-BEGIN;
-INSERT INTO `lnmp_installments` VALUES (5, '20181024175315792049', 1, 15, 494.00, 3, 1.50, 0.05, 'finished', '2018-10-24 17:53:15', '2018-10-24 17:53:15');
-COMMIT;
-
--- ----------------------------
 -- Table structure for lnmp_migrations
 -- ----------------------------
 DROP TABLE IF EXISTS `lnmp_migrations`;
@@ -1214,7 +1245,7 @@ CREATE TABLE `lnmp_migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='数据迁移表';
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='数据迁移表';
 
 -- ----------------------------
 -- Records of lnmp_migrations
@@ -1241,6 +1272,7 @@ INSERT INTO `lnmp_migrations` VALUES (22, '2018_10_24_105232_create_installments
 INSERT INTO `lnmp_migrations` VALUES (23, '2018_10_24_105301_create_installment_items_table', 12);
 INSERT INTO `lnmp_migrations` VALUES (24, '2018_10_26_141019_create_product_properties_table', 13);
 INSERT INTO `lnmp_migrations` VALUES (25, '2018_10_26_145347_products_add_long_title', 14);
+INSERT INTO `lnmp_migrations` VALUES (26, '2018_10_30_194340_create_seckill_products_table', 15);
 COMMIT;
 
 -- ----------------------------
@@ -1264,7 +1296,7 @@ CREATE TABLE `lnmp_order_items` (
   CONSTRAINT `lnmp_order_items_copy1_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `lnmp_orders` (`id`) ON DELETE CASCADE,
   CONSTRAINT `lnmp_order_items_copy1_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `lnmp_products` (`id`) ON DELETE CASCADE,
   CONSTRAINT `lnmp_order_items_copy1_ibfk_3` FOREIGN KEY (`product_sku_id`) REFERENCES `lnmp_product_skus` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='订单项目表';
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='订单项目表';
 
 -- ----------------------------
 -- Records of lnmp_order_items
@@ -1287,7 +1319,7 @@ INSERT INTO `lnmp_order_items` VALUES (14, 14, 32, 94, 1, 0.20, 1, '1', '2018-08
 INSERT INTO `lnmp_order_items` VALUES (15, 14, 32, 93, 1, 0.10, 2, '2', '2018-08-15 03:25:28');
 INSERT INTO `lnmp_order_items` VALUES (16, 14, 2, 4, 1, 6409.00, 3, '3', '2018-08-15 03:25:28');
 INSERT INTO `lnmp_order_items` VALUES (17, 14, 3, 8, 1, 3960.00, 4, '4', '2018-08-15 03:25:28');
-INSERT INTO `lnmp_order_items` VALUES (18, 15, 33, 97, 1, 494.00, NULL, NULL, NULL);
+INSERT INTO `lnmp_order_items` VALUES (19, 16, 71, 208, 1, 6666.00, NULL, NULL, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -1321,7 +1353,7 @@ CREATE TABLE `lnmp_orders` (
   KEY `orders_coupon_code_id_foreign` (`coupon_code_id`),
   CONSTRAINT `orders_coupon_code_id_foreign` FOREIGN KEY (`coupon_code_id`) REFERENCES `lnmp_coupon_codes` (`id`) ON DELETE SET NULL,
   CONSTRAINT `orders_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `lnmp_users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='订单表';
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='订单表';
 
 -- ----------------------------
 -- Records of lnmp_orders
@@ -1339,7 +1371,7 @@ INSERT INTO `lnmp_orders` VALUES (11, 'normal', '20180629123644258840', 1, '{\"a
 INSERT INTO `lnmp_orders` VALUES (12, 'normal', '20180629154502258558', 1, '{\"address\":\"\\u4e0a\\u6d77\\u5e02\\u5e02\\u8f96\\u533a\\u5f90\\u6c47\\u533a\\u756a\\u79ba\\u8def1028\\u53f71207-1208\\u5ba4\",\"zip\":200030,\"contact_name\":\"\\u8463\\u5764\\u9e3f\",\"contact_phone\":\"18302198805\"}', 0.20, NULL, NULL, NULL, NULL, NULL, 'pending', NULL, 1, 0, 'pending', NULL, NULL, '2018-06-29 23:45:02', '2018-08-15 03:23:01');
 INSERT INTO `lnmp_orders` VALUES (13, 'normal', '20180629154604000632', 1, '{\"address\":\"\\u4e0a\\u6d77\\u5e02\\u5e02\\u8f96\\u533a\\u5f90\\u6c47\\u533a\\u756a\\u79ba\\u8def1028\\u53f71207-1208\\u5ba4\",\"zip\":200030,\"contact_name\":\"\\u8463\\u5764\\u9e3f\",\"contact_phone\":\"18302198805\"}', 0.30, NULL, NULL, NULL, NULL, NULL, 'pending', NULL, 1, 0, 'pending', NULL, NULL, '2018-06-29 23:46:04', '2018-08-15 03:23:01');
 INSERT INTO `lnmp_orders` VALUES (14, 'normal', '20180815032410457103', 1, '{\"address\":\"\\u4e0a\\u6d77\\u5e02\\u5e02\\u8f96\\u533a\\u5f90\\u6c47\\u533a\\u756a\\u79ba\\u8def1028\\u53f71207-1208\\u5ba4\",\"zip\":200030,\"contact_name\":\"\\u8463\\u5764\\u9e3f\",\"contact_phone\":\"18302198805\"}', 10369.30, NULL, '2018-08-15 18:18:42', NULL, NULL, NULL, 'pending', NULL, 0, 1, 'pending', NULL, NULL, '2018-08-15 03:24:10', '2018-08-15 03:25:28');
-INSERT INTO `lnmp_orders` VALUES (15, 'normal', '20181024171336643941', 1, '{\"address\":\"\\u4e0a\\u6d77\\u5e02\\u5e02\\u8f96\\u533a\\u5f90\\u6c47\\u533a\\u756a\\u79ba\\u8def1028\\u53f71207-1208\\u5ba4\",\"zip\":200030,\"contact_name\":\"\\u8463\\u5764\\u9e3f\",\"contact_phone\":\"18302198805\"}', 494.00, NULL, NULL, NULL, NULL, NULL, 'pending', NULL, 0, 0, 'pending', NULL, NULL, '2018-10-24 17:13:36', '2018-10-24 17:13:36');
+INSERT INTO `lnmp_orders` VALUES (16, 'seckill', '20181031152205054557', 1, '{\"address\":\"\\u56db\\u5ddd\\u7701\\u5357\\u5145\\u5e02\\u5357\\u90e8\\u53bf\\u5b9a\\u6c34\\u9547\\u5c71\\u6c34\\u8317\\u82d13\\u680b1\\u5355\\u5143201\\u5ba4\",\"zip\":637301,\"contact_name\":\"\\u8463\\u5764\\u9e3f\",\"contact_phone\":\"18302198804\"}', 6666.00, '', NULL, NULL, NULL, NULL, 'pending', NULL, 0, 0, 'pending', NULL, NULL, '2018-10-31 15:22:05', '2018-10-31 15:22:05');
 COMMIT;
 
 -- ----------------------------
@@ -1365,7 +1397,7 @@ CREATE TABLE `lnmp_product_properties` (
   PRIMARY KEY (`id`),
   KEY `product_properties_product_id_foreign` (`product_id`),
   CONSTRAINT `product_properties_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `lnmp_products` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='产品属性表';
 
 -- ----------------------------
 -- Records of lnmp_product_properties
@@ -1419,7 +1451,7 @@ CREATE TABLE `lnmp_product_skus` (
   PRIMARY KEY (`id`),
   KEY `product_skus_product_id_foreign` (`product_id`),
   CONSTRAINT `product_skus_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `lnmp_products` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=208 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='产品sku表';
+) ENGINE=InnoDB AUTO_INCREMENT=209 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='产品sku表';
 
 -- ----------------------------
 -- Records of lnmp_product_skus
@@ -1521,7 +1553,7 @@ INSERT INTO `lnmp_product_skus` VALUES (93, '银色', '银色 15寸', 0.10, 1999
 INSERT INTO `lnmp_product_skus` VALUES (94, '深空灰色', '深空灰色 15寸', 0.20, 1997, 32, '2018-06-29 20:31:47', '2018-08-15 03:24:10');
 INSERT INTO `lnmp_product_skus` VALUES (95, 'odio', 'Itaque dolorem omnis explicabo pariatur occaecati.', 7648.00, 74072, 33, '2018-10-21 22:56:21', '2018-10-21 22:56:21');
 INSERT INTO `lnmp_product_skus` VALUES (96, 'quos', 'Eum sunt consectetur tempora architecto.', 5716.00, 34384, 33, '2018-10-21 22:56:21', '2018-10-21 22:56:21');
-INSERT INTO `lnmp_product_skus` VALUES (97, 'tenetur', 'Voluptas sint explicabo dolorum et inventore.', 494.00, 7222, 33, '2018-10-21 22:56:21', '2018-10-24 17:13:36');
+INSERT INTO `lnmp_product_skus` VALUES (97, 'tenetur', 'Voluptas sint explicabo dolorum et inventore.', 494.00, 7223, 33, '2018-10-21 22:56:21', '2018-10-26 17:42:38');
 INSERT INTO `lnmp_product_skus` VALUES (98, 'aut', 'Debitis quis voluptatem ut veniam et et exercitationem.', 1596.00, 44358, 34, '2018-10-21 22:56:21', '2018-10-21 22:56:21');
 INSERT INTO `lnmp_product_skus` VALUES (99, 'fuga', 'At sit accusamus enim dolores.', 3675.00, 20225, 34, '2018-10-21 22:56:21', '2018-10-21 22:56:21');
 INSERT INTO `lnmp_product_skus` VALUES (100, 'et', 'Qui accusamus repudiandae amet non qui deserunt.', 6971.00, 5915, 34, '2018-10-21 22:56:21', '2018-10-21 22:56:21');
@@ -1632,6 +1664,7 @@ INSERT INTO `lnmp_product_skus` VALUES (204, 'DDR4 2400 8G', 'DDR4 2400 8G', 539
 INSERT INTO `lnmp_product_skus` VALUES (205, 'DDR4 2133 8G', 'DDR4 2133 8G', 539.00, 999, 70, '2018-10-26 15:30:03', '2018-10-26 15:30:03');
 INSERT INTO `lnmp_product_skus` VALUES (206, 'DDR4 2666 8G', 'DDR4 2666 8G', 589.00, 999, 70, '2018-10-26 15:30:03', '2018-10-26 15:30:03');
 INSERT INTO `lnmp_product_skus` VALUES (207, 'DDR4 2400 16G', 'DDR4 2400 16G', 1199.00, 999, 70, '2018-10-26 15:30:03', '2018-10-26 15:30:03');
+INSERT INTO `lnmp_product_skus` VALUES (208, '秒杀 iPhone X 256G', '秒杀商品一份', 6666.00, 999, 71, '2018-10-31 13:14:38', '2018-10-31 15:22:05');
 COMMIT;
 
 -- ----------------------------
@@ -1643,7 +1676,7 @@ CREATE TABLE `lnmp_products` (
   `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'normal' COMMENT '商品类型',
   `category_id` int(10) unsigned DEFAULT NULL COMMENT '类目ID',
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '商品名称',
-  `long_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `long_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '商品长标题',
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '商品详情',
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '商品封面图片文件路径',
   `on_sale` tinyint(1) NOT NULL DEFAULT '1' COMMENT '商品是否正在售卖',
@@ -1657,13 +1690,13 @@ CREATE TABLE `lnmp_products` (
   KEY `products_category_id_foreign` (`category_id`),
   KEY `products_type_index` (`type`),
   CONSTRAINT `products_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `lnmp_categories` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='产品表';
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='产品表';
 
 -- ----------------------------
 -- Records of lnmp_products
 -- ----------------------------
 BEGIN;
-INSERT INTO `lnmp_products` VALUES (1, 'normal', 25, 'Apple iPhone X', '2018最新款 iPhone X 256G 苹果手机', '<p>​​​​<a href=\"https://sale.jd.com/act/XpbwM0G1ZaW.html\" target=\"_blank\"><img alt=\"\" src=\"https://img30.360buyimg.com/jgsq-productsoa/jfs/t24250/4/221454018/20495/68e604c7/5b29b6d2Ne6da1187.jpg\" /></a></p>\r\n\r\n<p><img alt=\"\" src=\"https://img30.360buyimg.com/cms/jfs/t20224/64/1456783694/118133/e7b04d48/5b2a122fN098e03ad.jpg\" style=\"height:223px; width:750px\" /></p>\r\n\r\n<table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"height:1272px; width:750px\">\r\n	<tbody>\r\n		<tr>\r\n			<td><img alt=\"\" src=\"https://img10.360buyimg.com/imgzone/jfs/t16873/173/2429368143/84521/f722c057/5af564e5N4c0d564f.jpg\" style=\"height:249px; width:750px\" /></td>\r\n		</tr>\r\n		<tr>\r\n			<td><img alt=\"\" src=\"https://img10.360buyimg.com/imgzone/jfs/t18493/37/635247604/42841/b751e11f/5a9cfa70Nd0637367.jpg\" style=\"height:341px; width:750px\" /></td>\r\n		</tr>\r\n		<tr>\r\n			<td><img alt=\"\" src=\"https://img10.360buyimg.com/imgzone/jfs/t17668/348/2483879516/82843/ff7ca37c/5af78e10N103afbd7.jpg\" style=\"height:405px; width:750px\" /></td>\r\n		</tr>\r\n		<tr>\r\n			<td><img alt=\"\" src=\"https://img10.360buyimg.com/imgzone/jfs/t15079/323/2344529912/61849/ce9798d9/5a9cfa70N43f7357c.jpg\" style=\"height:277px; width:750px\" /></td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><img alt=\"\" src=\"https://img30.360buyimg.com/jgsq-productsoa/jfs/t9724/59/1430591780/2138721/c72f6394/59e0726aN1edf23c4.jpg\" /></p>', 'images/59e42830N9da56c41.jpg', 1, 5.00, 1, 0, 7599.00, '2018-06-28 00:04:08', '2018-10-26 15:03:58');
+INSERT INTO `lnmp_products` VALUES (1, 'normal', 25, 'Apple iPhone X 256G', '2018最新款 iPhone X 256G 苹果手机', '<p>​​​​<a href=\"https://sale.jd.com/act/XpbwM0G1ZaW.html\" target=\"_blank\"><img alt=\"\" src=\"https://img30.360buyimg.com/jgsq-productsoa/jfs/t24250/4/221454018/20495/68e604c7/5b29b6d2Ne6da1187.jpg\" /></a></p>\r\n\r\n<p><img alt=\"\" src=\"https://img30.360buyimg.com/cms/jfs/t20224/64/1456783694/118133/e7b04d48/5b2a122fN098e03ad.jpg\" style=\"height:223px; width:750px\" /></p>\r\n\r\n<table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"height:1272px; width:750px\">\r\n	<tbody>\r\n		<tr>\r\n			<td><img alt=\"\" src=\"https://img10.360buyimg.com/imgzone/jfs/t16873/173/2429368143/84521/f722c057/5af564e5N4c0d564f.jpg\" style=\"height:249px; width:750px\" /></td>\r\n		</tr>\r\n		<tr>\r\n			<td><img alt=\"\" src=\"https://img10.360buyimg.com/imgzone/jfs/t18493/37/635247604/42841/b751e11f/5a9cfa70Nd0637367.jpg\" style=\"height:341px; width:750px\" /></td>\r\n		</tr>\r\n		<tr>\r\n			<td><img alt=\"\" src=\"https://img10.360buyimg.com/imgzone/jfs/t17668/348/2483879516/82843/ff7ca37c/5af78e10N103afbd7.jpg\" style=\"height:405px; width:750px\" /></td>\r\n		</tr>\r\n		<tr>\r\n			<td><img alt=\"\" src=\"https://img10.360buyimg.com/imgzone/jfs/t15079/323/2344529912/61849/ce9798d9/5a9cfa70N43f7357c.jpg\" style=\"height:277px; width:750px\" /></td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><img alt=\"\" src=\"https://img30.360buyimg.com/jgsq-productsoa/jfs/t9724/59/1430591780/2138721/c72f6394/59e0726aN1edf23c4.jpg\" /></p>', 'images/59e42830N9da56c41.jpg', 1, 5.00, 1, 0, 7599.00, '2018-06-28 00:04:08', '2018-10-26 17:44:52');
 INSERT INTO `lnmp_products` VALUES (2, 'normal', 12, 'vero', '', 'Minima reiciendis vel accusamus qui nam maxime.', 'https://lccdn.phphub.org/uploads/images/201806/01/5320/7kG1HekGK6.jpg', 1, 3.00, 0, 1, 1521.00, '2018-06-28 01:55:39', '2018-08-15 03:25:28');
 INSERT INTO `lnmp_products` VALUES (3, 'normal', 2, 'consectetur', '', 'Unde perspiciatis qui et vel officiis.', 'https://lccdn.phphub.org/uploads/images/201806/01/5320/nIvBAQO5Pj.jpg', 1, 4.00, 0, 1, 1219.00, '2018-06-28 01:55:39', '2018-08-15 03:25:28');
 INSERT INTO `lnmp_products` VALUES (4, 'normal', 1, 'pariatur', '', 'Iste qui nihil ipsum quae est porro maiores et.', 'https://lccdn.phphub.org/uploads/images/201806/01/5320/pa7DrV43Mw.jpg', 1, 0.00, 0, 0, 679.00, '2018-06-28 01:55:39', '2018-06-28 01:55:39');
@@ -1733,6 +1766,28 @@ INSERT INTO `lnmp_products` VALUES (67, 'normal', 13, 'Kingston/金士顿 金士
 INSERT INTO `lnmp_products` VALUES (68, 'normal', 13, '影驰 Gamer DDR4-2133 8G ', '影驰 Gamer DDR4-2400/3000 8G/8G*2 单条/套条 台式机呼吸内存条', '<p><img src=\"https://img.alicdn.com/imgextra/i4/2731691808/TB2o._izipnpuFjSZFkXXc4ZpXa_!!2731691808.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i2/2731691808/TB2eORYmvDH8KJjy1XcXXcpdXXa_!!2731691808.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i4/2731691808/TB21XTzm22H8KJjy0FcXXaDlFXa_!!2731691808.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i2/2731691808/TB21Sflm46I8KJjSszfXXaZVXXa_!!2731691808.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i4/2731691808/TB29lrSmZjI8KJjSsppXXXbyVXa_!!2731691808.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i4/2731691808/TB2kZUBm4PI8KJjSspfXXcCFXXa_!!2731691808.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i1/2731691808/TB2QAraeqLN8KJjSZFvXXXW8VXa_!!2731691808.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i4/2731691808/TB2eAwMmgvD8KJjSsplXXaIEFXa_!!2731691808.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i4/2731691808/TB2gCV_mxPI8KJjSspfXXcCFXXa_!!2731691808.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i2/2731691808/TB2fZ.glj3z9KJjy0FmXXXiwXXa_!!2731691808.jpg\" /></p><p><img src = \"https://gdp.alicdn.com/imgextra/i3/2731691808/TB2fOzyi_mWBKNjSZFBXXXxUFXa_!!2731691808.jpg\" /></p >', 'https://img.alicdn.com/bao/uploaded/i3/TB1oIQJKVXXXXc3XXXXa0s37FXX_013328.jpg_b.jpg', 1, 5.00, 0, 0, 489.00, '2018-10-26 15:30:03', '2018-10-26 15:30:03');
 INSERT INTO `lnmp_products` VALUES (69, 'normal', 13, '美商海盗船 LPX系列 ', '美商海盗船复仇者DDR4 8G 2400内存条电脑台式主机吃鸡4G16G 3000', '<p><img src=\"https://img.alicdn.com/imgextra/i1/2672032086/TB2sU5YX8HH8KJjy0FbXXcqlpXa_!!2672032086.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i4/2672032086/TB2HwNWumBjpuFjy1XdXXaooVXa_!!2672032086.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i4/2672032086/TB2Y6PJugJlpuFjSspjXXcT.pXa_!!2672032086.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i1/2672032086/TB22lOTcmBYBeNjy0FeXXbnmFXa_!!2672032086.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i3/2672032086/TB2F4KNul0kpuFjSsziXXa.oVXa_!!2672032086.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i4/2672032086/TB2O1qZoZbI8KJjy1zdXXbe1VXa_!!2672032086.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i4/2672032086/TB2mNK1yiRnpuFjSZFCXXX2DXXa_!!2672032086.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i4/2672032086/TB2rmzDyb4npuFjSZFmXXXl4FXa_!!2672032086.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i4/2672032086/TB2vNOVumxjpuFjSszeXXaeMVXa_!!2672032086.jpg\" /></p>', 'https://img.alicdn.com/bao/uploaded/i2/TB1SynxMVXXXXaVXFXX_qyp.VXX_111729.jpg_b.jpg', 1, 5.00, 0, 0, 359.00, '2018-10-26 15:30:03', '2018-10-26 15:30:03');
 INSERT INTO `lnmp_products` VALUES (70, 'normal', 13, 'Samsung/三星 8G DDR4 2400', '三星内存条8g DDR4 2400 2133 2666 笔记本内存条16g四代吃鸡内存', '<p><img src=\"https://img.alicdn.com/imgextra/i4/2088879112/TB2haJVAXOWBuNjy0FiXXXFxVXa_!!2088879112.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i4/2088879112/TB24BfbAhWYBuNjy1zkXXXGGpXa_!!2088879112.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i2/2088879112/TB2D_McAntYBeNjy1XdXXXXyVXa_!!2088879112.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i3/2088879112/TB255XTAeOSBuNjy0FdXXbDnVXa_!!2088879112.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i1/2088879112/TB2.iU3rRmWBuNkSndVXXcsApXa_!!2088879112.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i1/2088879112/TB2p93srLiSBuNkSnhJXXbDcpXa_!!2088879112.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i1/2088879112/TB2z_ugAf5TBuNjSspmXXaDRVXa_!!2088879112.jpg\" /><img src=\"https://img.alicdn.com/imgextra/i1/2088879112/TB2WBc7rOOYBuNjSsD4XXbSkFXa_!!2088879112.jpg\" /></p><p><img src = \"https://img.alicdn.com/imgextra/i2/2088879112/TB23DUcAntYBeNjy1XdXXXXyVXa_!!2088879112.jpg\" /><img src = \"https://img.alicdn.com/imgextra/i1/2088879112/TB28YJWAXuWBuNjSszbXXcS7FXa_!!2088879112.jpg\" /><img src = \"https://img.alicdn.com/imgextra/i2/2088879112/TB2p1NBAf5TBuNjSspcXXbnGFXa_!!2088879112.jpg\" /></p > <p ><img src = \"https://img.alicdn.com/imgextra/i3/2088879112/TB25P9BjkZmBKNjSZPiXXXFNVXa_!!2088879112.jpg\" /><img src = \"https://img.alicdn.com/imgextra/i2/2088879112/TB2ArOKAbSYBuNjSspfXXcZCpXa_!!2088879112.jpg\" /></p > <p ><img src = \"https://gdp.alicdn.com/imgextra/i4/2088879112/TB20U1Tcsr_F1JjSZFoXXbVRXXa_!!2088879112.jpg\" /></p >', 'https://img.alicdn.com/bao/uploaded/i8/TB1nkDwATJYBeNjy1zelIqhzVXa_020604.jpg_b.jpg', 1, 5.00, 0, 0, 539.00, '2018-10-26 15:30:03', '2018-10-26 15:30:03');
+INSERT INTO `lnmp_products` VALUES (71, 'seckill', 25, '秒杀 iPhone X 256G', '秒杀 2018最新款 iPhone X 256G 苹果手机', '<p>秒杀商品一份</p>', 'images/784a820ca4bcc7901feb1f8ef1cefb69.jpg', 1, 5.00, 0, 0, 6666.00, '2018-10-31 13:14:38', '2018-10-31 13:16:10');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for lnmp_seckill_products
+-- ----------------------------
+DROP TABLE IF EXISTS `lnmp_seckill_products`;
+CREATE TABLE `lnmp_seckill_products` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `product_id` int(10) unsigned NOT NULL COMMENT '商品ID',
+  `start_at` datetime NOT NULL COMMENT '秒杀开始时间',
+  `end_at` datetime NOT NULL COMMENT '秒杀结束时间',
+  PRIMARY KEY (`id`),
+  KEY `seckill_products_product_id_foreign` (`product_id`),
+  CONSTRAINT `seckill_products_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `lnmp_products` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='秒杀产品表';
+
+-- ----------------------------
+-- Records of lnmp_seckill_products
+-- ----------------------------
+BEGIN;
+INSERT INTO `lnmp_seckill_products` VALUES (1, 71, '2018-10-31 15:00:00', '2018-11-12 15:00:00');
 COMMIT;
 
 -- ----------------------------
@@ -1764,7 +1819,7 @@ BEGIN;
 INSERT INTO `lnmp_user_addresses` VALUES (1, 1, '天津市', '市辖区', '河西区', '第12街道第799号', 714000, '叶娜', '13774566368', '2018-06-28 15:47:03', '2018-06-19 06:00:09', '2018-06-28 23:47:03');
 INSERT INTO `lnmp_user_addresses` VALUES (2, 1, '重庆市', '市辖区', '南岸区', '第14街道第916号', 728600, '僧娟', '18243707378', NULL, '2018-06-19 06:00:09', '2018-06-19 06:00:09');
 INSERT INTO `lnmp_user_addresses` VALUES (3, 1, '重庆市', '市辖区', '渝中区', '第34街道第453号', 136300, '揭辉', '18392012296', NULL, '2018-06-19 06:00:09', '2018-06-19 06:00:09');
-INSERT INTO `lnmp_user_addresses` VALUES (4, 1, '四川省', '南充市', '南部县', '定水镇山水茗苑3栋1单元201室', 637301, '董坤鸿', '18302198804', NULL, '2018-06-19 06:54:01', '2018-06-27 19:54:52');
+INSERT INTO `lnmp_user_addresses` VALUES (4, 1, '四川省', '南充市', '南部县', '定水镇山水茗苑3栋1单元201室', 637301, '董坤鸿', '18302198804', '2018-10-31 15:22:05', '2018-06-19 06:54:01', '2018-10-31 15:22:05');
 INSERT INTO `lnmp_user_addresses` VALUES (5, 1, '上海市', '市辖区', '徐汇区', '番禺路1028号1207-1208室', 200030, '董坤鸿', '18302198805', '2018-10-24 17:13:36', '2018-06-19 19:24:12', '2018-10-24 17:13:36');
 INSERT INTO `lnmp_user_addresses` VALUES (6, 2, '上海市', '市辖区', '浦东新区', '成山路24弄2号204室', 200163, '何春凤', '18717861651', NULL, '2018-06-27 20:18:53', '2018-06-27 20:18:53');
 COMMIT;
@@ -1821,7 +1876,7 @@ CREATE TABLE `lnmp_users` (
 -- Records of lnmp_users
 -- ----------------------------
 BEGIN;
-INSERT INTO `lnmp_users` VALUES (1, '董坤鸿', '249529979@qq.com', '$2y$10$7Zlroonskxduy22r4fd12e14PCc3wFTfzmX9Wm8CqojBY3YJbR8RG', 1, 'rBkdqZ7WReQRjOIjLswpeXzIKTUAJ1n2OMDNu0PsICjkvsAILOI6MWczWkoK', '2018-06-19 02:23:18', '2018-10-25 10:59:23');
+INSERT INTO `lnmp_users` VALUES (1, '董坤鸿', '249529979@qq.com', '$2y$10$9tYJ85knFzTkk6Dqwp09kuEj7xvJwcIugC7krgR67kKzDMcFOffOm', 1, 'rBkdqZ7WReQRjOIjLswpeXzIKTUAJ1n2OMDNu0PsICjkvsAILOI6MWczWkoK', '2018-06-19 02:23:18', '2018-10-31 14:50:38');
 INSERT INTO `lnmp_users` VALUES (2, '何春凤', '764561837@qq.com', '$2y$10$sy/GE/bghOnJio3cr3.wDOWfFJRohO3.0coUNGfSpY9NFrSUkPwPq', 1, 'm5zXrcLzek6kZhN5BCO2sJcYvQEIr3ggsvPrB0ZHD41QAtydyPOG85IdRDMj', '2018-06-19 04:16:16', '2018-09-18 12:55:43');
 INSERT INTO `lnmp_users` VALUES (3, 'smallk', '466135132@qq.com', '$2y$10$8NZdty5d8DHljZcsGSj18OlElHr6xT7xRu3ez15R6A0WguqPVq/ZO', 0, '', '2018-08-03 09:07:48', '2018-08-03 09:07:48');
 COMMIT;
